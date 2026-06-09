@@ -1,6 +1,6 @@
 {
    "name": "@kaels/casileys",
-   "version": "0.4.2",
+   "version": "0.4.3",
    "description": "Modify Baileys For Bot WhatsApp Changli-MD",
    "main": "lib/index.js",
    "types": "lib/index.d.ts",
@@ -13,7 +13,7 @@
    },
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/kaels/casileys.git"
+      "url": "git+https://github.com/kyleee-max/casileys.git"
    },
    "files": [
       "lib/**/*",
@@ -35,7 +35,7 @@
       "whatsapp-group",
       "whatsapp-web"
    ],
-   "homepage": "https://github.com/kaels/casileys#readme",
+   "homepage": "https://github.com/kyleee-max/casileys#readme",
    "author": "kaels",
    "license": "MIT",
    "dependencies": {
