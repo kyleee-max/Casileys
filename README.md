@@ -1,229 +1,148 @@
-# 🌱 @itsliaaa/baileys
 
-[![Logo](https://files.catbox.moe/c5s9g0.jpg)](https://www.npmjs.com/package/@itsliaaa/baileys)
-
+<h1 align="center">🌱 Casileys</h1>
 <p align="center">
-   Enhanced Baileys v7 with fixes for newsletter media uploads, plus support for interactive messages, albums, and additional message types.
-   <br><br>
-   <a href="https://www.npmjs.com/package/@itsliaaa/baileys">
-      <img src="https://img.shields.io/npm/v/@itsliaaa/baileys?style=for-the-badge&logo=npm"/>
-   </a>
-   <a href="https://www.npmjs.com/package/@itsliaaa/baileys">
-      <img src="https://img.shields.io/npm/dm/@itsliaaa/baileys?style=for-the-badge&logo=npm"/>
-   </a>
-   <a href="https://github.com/itsliaaa/baileys">
-      <img src="https://img.shields.io/github/stars/itsliaaa/baileys?style=for-the-badge&logo=github"/>
-   </a>
-   <a href="LICENSE">
-      <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/>
-   </a>
-   <a href="https://nodejs.org">
-      <img src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&labelColor=green&logoColor=white&style=for-the-badge"/>
-   </a>
-   <a href="#">
-      <img src="https://img.shields.io/badge/ESM-only?logo=javascript&labelColor=yellow&logoColor=black&style=for-the-badge"/>
-   </a>
+  <img src="./casileys-header.gif" alt="Casileys" width="100%">
 </p>
 
-☕ For donation: [Saweria](https://saweria.co/itsliaaa)
 
-### ✨ Highlights
+<p align="center">
+  A WhatsApp Web API library for Node.js, based on Baileys and extended with additional message types, media handling, interactive messages, newsletter support, and more.
+</p>
 
-This fork designed for production use with a focus on clarity and safety:
+<p align="center">
+  <a href="https://npmjs.com/package/@kaels/casileys"><img src="https://img.shields.io/npm/v/@kaels/casileys?style=for-the-badge&logo=npm"/></a>
+  <a href="https://npmjs.com/package/@kaels/casileys"><img src="https://img.shields.io/npm/dm/@kaels/casileys?style=for-the-badge&logo=npm"/></a>
+  <a href="https://github.com/kyleee-max/casileys"><img src="https://img.shields.io/github/stars/kyleee-max/casileys?style=for-the-badge&logo=github"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/></a>
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&labelColor=green&logoColor=white&style=for-the-badge"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/ESM-only?logo=javascript&labelColor=yellow&logoColor=black&style=for-the-badge"/></a>
+</p>
 
-- 🚫 No obfuscation. Easy to read and audit.
-- 🚫 No auto-follow channel (newsletter) behavior.
+---
 
-> [!IMPORTANT]
-> Hi everyone,
->
-> I want to clarify two separate attribution issues regarding packages derived from this fork.
->
-> 1. Direct redistribution of my modifications without attribution
->
-> The following packages are operated by the same individual under multiple npm accounts:
->
-> - [@nuisockets](https://www.npmjs.com/package/@nuisockets/baileys)
-> - [@nuiisatoru](https://www.npmjs.com/package/@nuiisatoru/baileys)
-> - [@nuiisweetberry](https://www.npmjs.com/package/@nuiisweetberry/baileys)
-> - [@nuiisweety](https://www.npmjs.com/package/@nuiisweety/baileys)
->
-> These packages redistribute files and modifications originating from this fork while removing contributor credits and modification notes.
->
-> 2. Rebranded republishes of this fork
->
-> - [@lumina-md](https://www.npmjs.com/package/@lumina-md/baileys)
-> - [@sairidev](https://www.npmjs.com/package/@sairidev/baileys-new)
-> - [@lordmega/baileys](https://www.npmjs.com/package/@lordmega/baileys)
-> - [phantom-baileys](https://www.npmjs.com/package/phantom-baileys)
-> - [nexora-baileys](https://www.npmjs.com/package/nexora-baileys)
->
-> These packages primarily repackage or republish this fork under different names while failing to preserve proper attribution, credits, or modification notes.
-> 
-> To be clear, I am **NOT** the original maintainer of Baileys. Full credit and respect belong to:
->
-> https://github.com/WhiskeySockets/Baileys
->
-> **Forking is completely acceptable. Removing attribution, contributor credits, or modification history is not.**
->
-> Please report if necessary.
->
-> Thank you. 🤍
+## ✨ Highlights
 
-> [!NOTE]
-> 📄 This project is maintained with limited scope and is not intended to replace upstream Baileys.
->
-> 😞 And, really sorry for my bad english.
+| Feature | Support |
+|---|:---:|
+| WhatsApp Web / Multi-device | ✅ |
+| Pairing Code | ✅ |
+| Text & Media Messages | ✅ |
+| Albums | ✅ |
+| Polls | ✅ |
+| Interactive Messages | ✅ |
+| Rich Responses | ✅ |
+| Inline Entities | ✅ |
+| Tables | ✅ |
+| Group Status | ✅ |
+| Sticker Pack | ✅ |
+| Newsletter Messages | ✅ |
+| Group Management | ✅ |
+| Community Management | ✅ |
+| Profile Management | ✅ |
+| Business Features | ✅ |
+| Privacy Management | ✅ |
+| Message Editing & Deletion | ✅ |
 
-### 📋 Table of Contents
-- [📋 Table of Contents](#-table-of-contents)
-- [✨ Highlights](#-highlights)
-- [🛠️ Internal Adjustments](#%EF%B8%8F-internal-adjustments)
-- [📨 Messages Handling & Compatibility](#-highlights)
-- [🧩 Additional Message Options](#-additional-message-options)
-- [📥 Installation](#-installation)
-   - [🧩 Import (ESM & CJS)](#-import-esm--cjs)
-- [🌐 Connect to WhatsApp (Quick Step)](#-connect-to-whatsapp-quick-step)
-   - [🔐 Auth State](#-auth-state)
-- [🗄️ Implementing Data Store](#%EF%B8%8F-implementing-data-store)
-- [🪪 WhatsApp IDs Explain](#-whatsapp-ids-explain)
-- [✉️ Sending Messages](#%EF%B8%8F-sending-messages)
-   - [🔠 Text](#-text)
-   - [🔔 Mention](#-mention)
-   - [😁 Reaction](#-reaction)
-   - [📌 Pin Message](#-pin-message)
-   - [🔖 Keep Chat](#-keep-chat)
-   - [➡️ Forward Message](#%EF%B8%8F-forward-message)
-   - [👤 Contact](#-contact)
-   - [📍 Location](#-location)
-   - [🗓️ Event](#%EF%B8%8F-event)
-   - [👥 Group Invite](#-group-invite)
-   - [🛍️ Product](#%EF%B8%8F-product)
-   - [📊 Poll](#-poll)
-   - [💭 Button Response](#-button-response)
-   - [✨ Rich Response](#-rich-response)
-   - [🧾 Message with Code Block](#-message-with-code-block)
-   - [🌏 Message with Inline Entities](#-message-with-inline-entities)
-   - [📋 Message with Table](#-message-with-table)
-   - [🎞️ Status Mention](#%EF%B8%8F-status-mention)
-- [📁 Sending Media Messages](#-sending-media-messages)
-   - [🖼️ Image](#%EF%B8%8F-image)
-   - [🎥 Video](#-video)
-   - [📃 Sticker](#-sticker)
-   - [💽 Audio](#-audio)
-   - [🗂️ Document](#%EF%B8%8F-document)
-   - [🖼️ Album (Image & Video)](#%EF%B8%8F-album-image--video)
-   - [📦 Sticker Pack](#-sticker-pack)
-- [👉🏻 Sending Interactive Messages](#-sending-interactive-messages)
-   - [🔘 Buttons](#-buttons)
-   - [📋 List](#-list)
-   - [🗄️ Interactive](#%EF%B8%8F-interactive)
-   - [🫙 Hydrated Template](#-hydrated-template)
-- [💳 Sending Payment Messages](#-sending-payment-messages)
-   - [➕ Invite Payment](#-invite-payment)
-   - [🧾 Invoice](#-invoice)
-   - [🛍️ Order](#%EF%B8%8F-order)
-   - [💳 Request Payment](#-request-payment)
-- [👁️ Other Message Options](#%EF%B8%8F-other-message-options)
-   - [🤖 AI Icon](#-ai-icon)
-   - [🕒 Ephemeral](#-ephemeral)
-   - [📰 External Ad Reply](#-external-ad-reply)
-   - [🧑‍🧑‍🧒 Group Status](#%E2%80%8D%E2%80%8D-group-status)
-   - [🐱 Lottie Sticker](#-lottie-sticker)
-   - [🧩 Raw](#-raw)
-   - [🏷️ Secure Meta Service Label](#%EF%B8%8F-secure-meta-service-label)
-   - [📑 Spoiler](#-spoiler)
-   - [👁️ View Once](#%EF%B8%8F-view-once)
-   - [👁️ View Once V2](#%EF%B8%8F-view-once-v2)
-   - [👁️ View Once V2 Extension](#%EF%B8%8F-view-once-v2-extension)
-- [♻️ Modify Messages](#%EF%B8%8F-modify-messages)
-   - [🗑️ Delete Messages](#%EF%B8%8F-delete-messages)
-   - [✏️ Edit Messages](#%EF%B8%8F-edit-messages)
-- [🧰 Additional Contents](#-additional-contents)
-   - [🏷️ Find User ID (JID|PN/LID)](#%EF%B8%8F-find-user-id-jidpnlid)
-   - [🔑 Request Custom Pairing Code](#-request-custom-pairing-code)
-   - [🖼️ Image Processing](#%EF%B8%8F-image-processing)
-   - [📣 Newsletter Management](#-newsletter-management)
-   - [👥 Group Management](#-group-management)
-   - [👥 Community Management](#-community-management)
-   - [👤 Profile Management](#-profile-management)
-   - [🛒 Business Management](#-business-management)
-   - [🔐 Privacy Management](#-privacy-management)
-   - [📡 Events](#-events)
-- [🚀 Try the Bot](#-try-the-bot)
-- [📦 Fork Base](#-fork-base)
-- [📣 Credits](#-credits)
+Casileys is designed to remain readable and auditable while extending the functionality available from its upstream fork.
 
-### 🛠️ Internal Adjustments
-- 🖼️ Fixed an issue where media could not be sent to newsletters due to an upstream issue.
-- 📁 Reintroduced [`makeInMemoryStore`](#%EF%B8%8F-implementing-data-store) with a minimal ESM adaptation and small adjustments for Baileys v7.
-- 📦 Switched FFmpeg execution from `exec` to `spawn` for safer process handling.
-- 🗃️ Added [`@napi-rs/image`](https://www.npmjs.com/package/@napi-rs/image) as a supported image processing backend in [`getImageProcessingLibrary()`](#%EF%B8%8F-image-processing), offering a balance between performance and compatibility.
+---
 
-### 📨 Messages Handling & Compatibility
-- 📩 Expanded messages support for:
-   - 🖼️ [Album Message](#%EF%B8%8F-album-image--video)
-   - 👤 [Group Status Message](#%E2%80%8D%E2%80%8D-group-status)
-   - 👉🏻 [Interactive Message](#-sending-interactive-messages) (buttons, lists, native flows, templates, carousels).
-   - 🎞️ [Status Mention Message](#%EF%B8%8F-status-mention)
-   - 📦 [Sticker Pack Message](#-sticker-pack)
-   - ✨ [Rich Response Message](#-rich-response) **[NEW]**
-   - 🧾 [Message with Code Blocks](#-message-with-code-block) **[NEW]**
-   - [🌏 Message with Inline Entities](#-message-with-inline-entities) **[NEW]**
-   - 📋 [Message with Table](#-message-with-table) **[NEW]**
-   - 💳 [Payment-related Message](#-sending-payment-messages) (payment requests, invites, orders, invoices).
-- 📰 Simplified sending messages with ad thumbnail using [`externalAdReply`](#-external-ad-reply), without requiring manual `contextInfo`.
-- 💭 Added support for quoting messages inside channel (newsletter). **[NEW]**
-- 🎀 Added support for [custom button icon](#%EF%B8%8F-interactive). **[NEW]**
+## 🛠️ Internal Adjustments
 
-### 🧩 Additional Message Options
-- 👁️ Added optional boolean flags for message handling:  
-   - 🤖 [`ai`](#-ai-icon) - AI icon on message
-   - 📣 [`mentionAll`](#-mention) - Mention all group participants without requiring their JIDs in `mentions` or `mentionedJid` **[NEW]**
-   - 🔧 [`ephemeral`](#-ephemeral), [`groupStatus`](#%E2%80%8D%E2%80%8D-group-status), [`isLottie`](#-lottie-sticker), [`spoiler`](#-spoiler), [`viewOnce`](#%EF%B8%8F-view-once), [`viewOnceV2`](#%EF%B8%8F-view-once-v2), [`viewOnceV2Extension`](#%EF%B8%8F-view-once-v2-extension), [`interactiveAsTemplate`](#%EF%B8%8F-interactive) - Message wrappers
-   - 🔒 [`secureMetaServiceLabel`](#%EF%B8%8F-secure-meta-service-label) - Secure meta service label on message **[NEW]**
-   - 📄 [`raw`](#-raw) - Build your message manually **(DO NOT USE FOR EXPLOITATION)**
+Casileys retains the existing message and protocol implementations from its fork base while adding project-specific improvements.
 
-### 📥 Installation
+Some of the included changes cover:
 
-- 📄 Via `package.json`
+- Newsletter media handling
+- `makeInMemoryStore` support
+- Extended interactive message support
+- Album messages
+- Group status messages
+- Additional message wrappers
+- Extended media handling
+- Direct `externalAdReply` access
+- Additional newsletter, group, community, profile, business, and privacy utilities
+- Casileys Group Status Helper
+
+---
+
+## 📨 Message Compatibility
+
+The message layer supports the following extended structures:
+
+| Message Type | Available |
+|---|:---:|
+| Album | ✅ |
+| Group Status | ✅ |
+| Interactive | ✅ |
+| Status Mention | ✅ |
+| Sticker Pack | ✅ |
+| Rich Response | ✅ |
+| Code Block | ✅ |
+| Inline Entities | ✅ |
+| Table | ✅ |
+| Payment-related Messages | ✅ |
+| External Ad Reply | ✅ |
+| View Once Variants | ✅ |
+| Ephemeral | ✅ |
+| Spoiler | ✅ |
+| Lottie Sticker | ✅ |
+| Raw Message | ✅ |
+
+---
+
+## 📥 Installation
+
+**package.json**
 
 ```json
-# NPM
 "dependencies": {
-   "@itsliaaa/baileys": "latest"
-}
-
-# GitHub
-"dependencies": {
-   "@itsliaaa/baileys": "github:itsliaaa/baileys"
+   "@kaels/casileys": "latest"
 }
 ```
 
-- ⌨️ Via terminal
+**GitHub**
+
+```json
+"dependencies": {
+   "@kaels/casileys": "github:kyleee-max/casileys"
+}
+```
+
+**Terminal**
 
 ```bash
-# NPM
-npm i @itsliaaa/baileys@latest
-
-# GitHub
-npm i github:itsliaaa/baileys
+npm i @kaels/casileys@latest
 ```
 
-#### 🧩 Import (ESM & CJS)
+Or directly from GitHub:
 
-```javascript
-// --- ESM
-import { makeWASocket } from '@itsliaaa/baileys'
-
-// --- CJS (tested and working on Node.js 24 ✅)
-const { makeWASocket } = require('@itsliaaa/baileys')
+```bash
+npm i github:kyleee-max/casileys
 ```
 
-### 🌐 Connect to WhatsApp (Quick Step)
+---
 
-```javascript
-import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from '@itsliaaa/baileys'
+## 🧩 Import
+
+**ESM**
+
+```js
+import { makeWASocket } from '@kaels/casileys'
+```
+
+**CJS**
+
+```js
+const { makeWASocket } = require('@kaels/casileys')
+```
+
+---
+
+## 🌐 Connect to WhatsApp
+
+```js
+import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from '@kaels/casileys'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -234,14 +153,12 @@ const logger = pino({ level: 'silent' })
 
 const connectToWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('session')
-    
+
    const sock = makeWASocket({
       logger,
       auth: state
    })
-
    sock.ev.on('creds.update', saveCreds)
-
    sock.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect } = update
       if (connection === 'connecting' && !sock.authState.creds.registered) {
@@ -260,7 +177,6 @@ const connectToWhatsApp = async () => {
          console.log('✅ Successfully connected to WhatsApp')
       }
    })
-
    sock.ev.on('messages.upsert', async ({ messages }) => {
       for (const message of messages) {
          if (!message.message) continue
@@ -276,18 +192,20 @@ const connectToWhatsApp = async () => {
 connectToWhatsApp()
 ```
 
-#### 🔐 Auth State
+---
 
-> [!NOTE]
-> You can use the experimental `useSingleFileAuthState` and `useSqliteAuthState` as an alternative to `useMultiFileAuthState`. However, `useSingleFileAuthState` already includes an internal caching mechanism, so there is no need to wrap `state.keys` with `makeCacheableSignalKeyStore`.
+## 🔐 Auth State
 
-### 🗄️ Implementing Data Store
+You can use `useMultiFileAuthState` as the default authentication state implementation.
 
-> [!CAUTION]
-> I highly recommend building your own data store, as keeping an entire chat history in memory can lead to excessive RAM usage.
+Experimental alternatives such as `useSingleFileAuthState` and `useSqliteAuthState` may also be used where supported.
 
-```javascript
-import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from '@itsliaaa/baileys'
+---
+
+## 🗄️ Data Store
+
+```js
+import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from '@kaels/casileys'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -297,10 +215,9 @@ const myPhoneNumber = '6288888888888'
 const storePath = './store.json'
 
 const logger = pino({ level: 'silent' })
-
 const connectToWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('session')
-    
+
    const sock = makeWASocket({
       logger,
       auth: state
@@ -314,7 +231,6 @@ const connectToWhatsApp = async () => {
    store.bind(sock.ev)
 
    sock.ev.on('creds.update', saveCreds)
-
    sock.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect } = update
       if (connection === 'connecting' && !sock.authState.creds.registered) {
@@ -333,7 +249,6 @@ const connectToWhatsApp = async () => {
          console.log('✅ Successfully connected to WhatsApp')
       }
    })
-
    sock.ev.on('chats.upsert', () => {
       console.log('✉️ Got chats', store.chats.all())
    })
@@ -354,24 +269,37 @@ const connectToWhatsApp = async () => {
 connectToWhatsApp()
 ```
 
-### 🪪 WhatsApp IDs Explain
+> **Note:** For large applications, consider using a dedicated persistent data store instead of keeping the entire chat history in memory.
 
-`id` is the WhatsApp ID, called `jid` and `lid` too, of the person or group you're sending the message to.
-- It must be in the format `[country code][phone number]@s.whatsapp.net`
-   - Example for people: `19999999999@s.whatsapp.net` and `12699999999@lid`.
-   - For groups, it must be in the format `123456789-123345@g.us`.
-- For Meta AI, it's `11111111111@bot`.
-- For broadcast lists, it's `[timestamp of creation]@broadcast`.
-- For stories, the ID is `status@broadcast`.
+---
 
-### ✉️ Sending Messages
+## 🪪 WhatsApp IDs
 
-> [!NOTE]
-> You can get the `jid` from `message.key.remoteJid` in the first example.
+`jid` identifies the WhatsApp account, group, broadcast destination, newsletter, or status target involved in an operation.
 
-#### 🔠 Text
+| Target | Format |
+|---|---|
+| User | `[country code][phone]@s.whatsapp.net` |
+| LID | `[id]@lid` |
+| Group | `[id]@g.us` |
+| Meta AI | `[id]@bot` |
+| Broadcast | `[timestamp]@broadcast` |
+| Status | `status@broadcast` |
+| Newsletter | `[id]@newsletter` |
 
-```javascript
+For incoming messages, the destination is commonly available through:
+
+```js
+message.key.remoteJid
+```
+
+---
+
+## ✉️ Sending Messages
+
+### 🔠 Text
+
+```js
 // --- Send a regular text message
 sock.sendMessage(jid, {
    text: '👋🏻 Hello'
@@ -380,23 +308,21 @@ sock.sendMessage(jid, {
 })
 
 // --- Send a text message with a link preview
-const urlA = 'https://www.npmjs.com/package/@itsliaaa/baileys'
-
+const urlA = 'https://www.npmjs.com/package/@kaels/casileys'
 sock.sendMessage(jid, {
    text: urlA + ' 👆🏻 Check it out!',
    linkPreview: {
       'matched-text': urlA,
-      title: '🌱 @itsliaaa/baileys',
-      description: 'Underrated Baileys Fork',
+      title: '🌱 Casileys',
+      description: 'WhatsApp Web API for Node.js',
       previewType: 0, // --- Use 1 for video playback in the link preview
       jpegThumbnail: fs.readFileSync('./path/to/image.jpg')
    }
 })
 
 // --- Send a text message with a large link preview and favicon
-import { prepareWAMessageMedia } from '@itsliaaa/baileys'
-
-const urlB = 'https://www.npmjs.com/package/@itsliaaa/baileys#readme'
+import { prepareWAMessageMedia } from 'YOUR_CASILEYS_PACKAGE'
+const urlB = 'https://www.npmjs.com/package/@kaels/casileys#readme'
 
 const { imageMessage: image } = await prepareWAMessageMedia({
    image: {
@@ -410,13 +336,12 @@ const { imageMessage: image } = await prepareWAMessageMedia({
 // --- Set the thumbnail display size
 image.height = 720
 image.width = 480
-
 sock.sendMessage(jid, {
    text: urlB + ' 👆🏻 Check it out!',
    linkPreview: {
       'matched-text': urlB,
-      title: '🌱 @itsliaaa/baileys',
-      description: 'Underrated Baileys Fork',
+      title: '🌱 Casileys',
+      description: 'WhatsApp Web API for Node.js',
       previewType: 0,
       jpegThumbnail: fs.readFileSync('./path/to/image.jpg'),
       highQualityThumbnail: image,
@@ -431,9 +356,9 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 🔔 Mention
+### 🔔 Mention
 
-```javascript
+```js
 // --- Regular mention
 sock.sendMessage(jid, {
    text: '👋🏻 Hello @628123456789',
@@ -451,9 +376,9 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 😁 Reaction
+### 😁 Reaction
 
-```javascript
+```js
 sock.sendMessage(jid, {
    react: {
       key: message.key,
@@ -462,9 +387,9 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 📌 Pin Message
+### 📌 Pin Message
 
-```javascript
+```js
 sock.sendMessage(jid, {
    pin: message.key,
    time: 86400, // --- Set the value in seconds: 86400 (1d), 604800 (7d), or 2592000 (30d)
@@ -472,40 +397,39 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 🔖 Keep Chat
+### 🔖 Keep Chat
 
-> [!NOTE]
-> Keep Chat can only be used in chats or groups with disappearing messages enabled.
+> **Note:** Keep Chat can only be used in chats or groups with disappearing messages enabled.
 
-```javascript
+```js
 sock.sendMessage(jid, {
    keep: message.key,
    type: 1 // --- Or 2 to remove
 })
 ```
 
-#### ➡️ Forward Message
+### ➡️ Forward Message
 
-```javascript
+```js
 sock.sendMessage(jid, {
    forward: message,
    force: true // --- Optional
 })
 ```
 
-#### 👤 Contact
+### 👤 Contact
 
-```javascript
+```js
 const vcard = 'BEGIN:VCARD\n'
             + 'VERSION:3.0\n'
-            + 'FN:Lia Wynn\n'
-            + 'ORG:Waitress;\n'
+            + 'FN:Casileys User\n'
+            + 'ORG:Casileys;\n'
             + 'TEL;type=CELL;type=VOICE;waid=628123456789:+62 8123 4567 89\n'
             + 'END:VCARD'
 
 sock.sendMessage(jid, {
    contacts: {
-      displayName: 'Lia Wynn',
+      displayName: 'Casileys User',
       contacts: [
          { vcard }
       ]
@@ -515,9 +439,9 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 📍 Location
+### 📍 Location
 
-```javascript
+```js
 sock.sendMessage(jid, {
    location: {
       degreesLatitude: 24.121231,
@@ -529,9 +453,9 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 🗓️ Event
+### 🗓️ Event
 
-```javascript
+```js
 sock.sendMessage(jid, {
    event: {
       name: '🎶 Meet & Mingle Party',
@@ -553,15 +477,15 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 👥 Group Invite
+### 👥 Group Invite
 
-```javascript
+```js
 const inviteCode = groupUrl
    .split('chat.whatsapp.com/')[1]
    ?.split('?')[0]
 
 const groupJid = '1201111111111@g.us'
-const groupName = '@itsliaaa/baileys'
+const groupName = 'Casileys'
 
 sock.sendMessage(jid, {
    groupInvite: {
@@ -576,17 +500,16 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 🛍️ Product
+### 🛍️ Product
 
-```javascript
+```js
 import { randomUUID } from 'crypto'
-
 sock.sendMessage(jid, {
    image: {
       url: './path/to/image.jpg'
    },
    body: '👋🏻 Check my product here!',
-   footer: '@itsliaaa/baileys',
+   footer: 'Casileys',
    product: {
       currencyCode: 'IDR',
       description: '🛍️ Interesting product!',
@@ -594,17 +517,17 @@ sock.sendMessage(jid, {
       productId: randomUUID(),
       productImageCount: 1,
       salePriceAmount1000: 65_000_000,
-      signedUrl: 'https://www.npmjs.com/package/@itsliaaa/baileys',
-      title: '📦 Starseed (Premium)',
-      url: 'https://www.npmjs.com/package/@itsliaaa/baileys'
+      signedUrl: 'YOUR_PRODUCT_URL',
+      title: '📦 Casileys Product',
+      url: 'YOUR_PRODUCT_URL'
    },
    businessOwnerJid: '0@s.whatsapp.net'
 })
 ```
 
-#### 📊 Poll
+### 📊 Poll
 
-```javascript
+```js
 // --- Regular poll message
 sock.sendMessage(jid, {
    poll: {
@@ -653,238 +576,46 @@ sock.sendMessage(jid, {
 sock.sendMessage(jid, {
    pollUpdate: {
       metadata: {},
-      key: message.key,
-      vote: {
-         enclv: /* <Buffer> */,
-         encPayload: /* <Buffer> */
-      }
+      key: message.key
    }
 }, {
    quoted: message
 })
 ```
 
-#### 💭 Button Response
+---
 
-```javascript
-// --- Using buttonsResponseMessage
-sock.sendMessage(jid, {
-   type: 'plain',
-   buttonReply: {
-      id: '#Menu',
-      displayText: '✨ Interesting Menu'
-   }
-}, {
-   quoted: message
-})
+## 📁 Sending Media Messages
 
-// --- Using interactiveResponseMessage
-sock.sendMessage(jid, {
-   flowReply: {
-      format: 0,
-      text: '💭 Response',
-      name: 'menu_options',
-      paramsJson: JSON.stringify({
-         id: '#Menu',
-         description: '✨ Interesting Menu'
-      })
-   }
-}, {
-   quoted: message
-})
+### 🖼️ Image
 
-// --- Using listResponseMessage
-sock.sendMessage(jid, {
-   listReply: {
-      title: '📄 See More',
-      description: '✨ Interesting Menu',
-      id: '#Menu'
-   }
-}, {
-   quoted: message
-})
-
-// --- Using templateButtonReplyMessage
-sock.sendMessage(jid, {
-   type: 'template',
-   buttonReply: {
-      id: '#Menu',
-      displayText: '✨ Interesting Menu',
-      index: 1
-   }
-}, {
-   quoted: message
-})
-```
-
-#### ✨ Rich Response
-
-> [!NOTE]
-> `richResponse[]` is a representation of [`submessages[]`](https://baileys.wiki/docs/api/namespaces/proto/interfaces/IAIRichResponseSubMessage) inside `richResponseMessage`.
-
-> [!TIP]
-> You can still use the original [`submessages[]`](https://baileys.wiki/docs/api/namespaces/proto/interfaces/IAIRichResponseSubMessage) field directly.
-> The code example below is just an implementation using a helper, not a required structure.
-
-```javascript
-sock.sendMessage(jid, {
-   disclaimerText: 'RAW submessages structure example',
-   richResponse: [{
-      text: 'Example Usage',
-   }, {
-      language: 'javascript',
-      code: [{
-         highlightType: 0,
-         codeContent: 'console.log("Hello, World!")'
-      }]
-   }, {
-      text: 'Pretty simple, right?\n'
-   }, {
-      text: 'Comparison between Node.js, Bun, and Deno',
-   }, {
-      title: 'Runtime Comparison',
-      table: [{
-         isHeading: true,
-         items: ['', 'Node.js', 'Bun', 'Deno']
-      }, {
-         isHeading: false,
-         items: ['Engine', 'V8 (C++)', 'JavaScriptCore (C++)', 'V8 (C++)']
-      }, {
-         isHeading: false,
-         items: ['Performance', '4/5', '5/5', '4/5']
-      }]
-   }, {
-      text: 'Does this help clarify the differences?'
-   }]
-})
-```
-
-> [!TIP]
-> You can easily add syntax highlighting by importing `tokenizeCode` directly from Baileys.
-
-```javascript
-import { tokenizeCode } from '@itsliaaa/baileys'
-
-const language = 'javascript'
-const code = 'console.log("Hello, World!")'
-
-sock.sendMessage(jid, {
-   disclaimerText: 'Example of tokenizing Code Block',
-   richResponse: [{
-      text: 'Example Usage',
-   }, {
-      language,
-      code: tokenizeCode(code, language)
-   }, {
-      text: 'Pretty simple, right?'
-   }]
-})
-```
-
-> 💡 Supported Languages: `css`, `html`, `javascript`, `typescript`, `python`, `golang`, `rust`, `c`, `c#`, `c++`, `bash`, `bat`, `powershell`.
-
-#### 🧾 Message with Code Block
-
-> [!NOTE]
-> This feature already includes a built-in tokenizer with `tokenizeCode`.
-
-```javascript
-sock.sendMessage(jid, {
-   disclaimerText: 'Code Block',
-   headerText: '## Example Usage',
-   contentText: '---',
-   code: 'console.log("Hello, World!")',
-   language: 'javascript',
-   footerText: 'Pretty simple, right?'
-})
-```
-
-#### 🌏 Message with Inline Entities
-
-```javascript
-sock.sendMessage(jid, {
-   disclaimerText: 'Inline Entities',
-   headerText: '## Check Out!',
-   contentText: '---',
-   links: [{
-      text: '1. Google',
-      title: 'Popular Search Engine',
-      url: 'https://www.google.com/'
-   }, {
-      text: '2. YouTube',
-      title: 'Popular Streaming Platform',
-      url: 'https://www.youtube.com/'
-   }, {
-      text: '3. Modded Baileys',
-      title: 'Underrated Baileys Fork',
-      url: 'https://www.npmjs.com/package/@itsliaaa/baileys'
-   }],
-   footerText: '---'
-})
-```
-
-#### 📋 Message with Table
-
-```javascript
-sock.sendMessage(jid, {
-   disclaimerText: 'Table',
-   headerText: '## Comparison between Node.js, Bun, and Deno',
-   contentText: '---',
-   title: 'Runtime Comparison',
-   table: [
-      ['', 'Node.js', 'Bun', 'Deno'],
-      ['Engine', 'V8 (C++)', 'JavaScriptCore (C++)', 'V8 (C++)'],
-      ['Performance', '4/5', '5/5', '4/5']
-   ],
-   noHeading: false, // --- Optional
-   footerText: 'Does this help clarify the differences?'
-})
-```
-
-#### 🎞️ Status Mention
-
-```javascript
-sock.sendMessage([jidA, jidB, jidC], {
-   text: 'Hello! 👋🏻'
-})
-```
-
-### 📁 Sending Media Messages
-
-> [!NOTE]
-> For media messages, you can pass a `Buffer` directly, or an object with either `{ stream: Readable }` or `{ url: string }` (local file path or HTTP/HTTPS URL).
-
-#### 🖼️ Image
-
-```javascript
+```js
 sock.sendMessage(jid, {
    image: {
       url: './path/to/image.jpg'
    },
-   caption: '🔥 Superb'
+   caption: '🖼️ Image'
 }, {
    quoted: message
 })
 ```
 
-#### 🎥 Video
+### 🎥 Video
 
-```javascript
+```js
 sock.sendMessage(jid, {
    video: {
       url: './path/to/video.mp4'
    },
-   gifPlayback: false, // --- Set true if you want to send video as GIF
-   ptv: false,  // --- Set true if you want to send video as PTV
-   caption: '🔥 Superb'
+   caption: '🎥 Video'
 }, {
    quoted: message
 })
 ```
 
-#### 📃 Sticker
+### 📃 Sticker
 
-```javascript
+```js
 sock.sendMessage(jid, {
    sticker: {
       url: './path/to/sticker.webp'
@@ -894,1184 +625,782 @@ sock.sendMessage(jid, {
 })
 ```
 
-#### 💽 Audio
+### 💽 Audio
 
-```javascript
+```js
 sock.sendMessage(jid, {
    audio: {
       url: './path/to/audio.mp3'
    },
-   ptt: false // --- Set true if you want to send audio as Voice Note
+   mimetype: 'audio/mpeg',
+   ptt: false
 }, {
    quoted: message
 })
 ```
 
-#### 🗂️ Document
+### 🗂️ Document
 
-```javascript
+```js
 sock.sendMessage(jid, {
    document: {
       url: './path/to/document.pdf'
    },
    mimetype: 'application/pdf',
-   caption: '✨ My work!'
+   fileName: 'document.pdf',
+   caption: '📄 Document'
 }, {
    quoted: message
 })
 ```
 
-#### 🖼️ Album (Image & Video)
+---
 
-```javascript
+## 🖼️ Album
+
+```js
 sock.sendMessage(jid, {
-   album: [{
-      image: {
-         url: './path/to/image.jpg'
+   album: [
+      {
+         image: {
+            url: './path/to/image-1.jpg'
+         }
       },
-      caption: '1st image'
-   }, {
-      video: {
-         url: './path/to/video.mp4'
+      {
+         image: {
+            url: './path/to/image-2.jpg'
+         }
       },
-      caption: '1st video'
-   }, {
-      image: {
-         url: './path/to/image.jpg'
-      },
-      caption: '2nd image'
-   }, {
-      video: {
-         url: './path/to/video.mp4'
-      },
-      caption: '2nd video'
-   }]
-}, {
-   quoted: message
-})
-```
-
-#### 📦 Sticker Pack
-
-> [!IMPORTANT]
-> If `sharp` or `@napi-rs/image` is not installed, the `cover` and `stickers` must already be in WebP format.
-
-```javascript
-sock.sendMessage(jid, {
-   cover: {
-      url: './path/to/image.webp'
-   },
-   stickers: [{
-      data: {
-         url: './path/to/image.webp'
+      {
+         video: {
+            url: './path/to/video.mp4'
+         }
       }
-   }, {
-      data: {
-         url: './path/to/image.webp'
-      }
-   }, {
-      data: {
-         url: './path/to/image.webp'
-      }
-   }],
-   name: '📦 My Sticker Pack',
-   publisher: '🌟 Lia Wynn',
-   description: '@itsliaaa/baileys'
+   ]
 }, {
    quoted: message
 })
 ```
 
-### 👉🏻 Sending Interactive Messages
+---
 
-#### 🔘 Buttons
+## 📦 Sticker Pack
 
-```javascript
-// --- Regular buttons message
+```js
 sock.sendMessage(jid, {
-   text: '👆🏻 Buttons!',
-   footer: '@itsliaaa/baileys',
-   buttons: [{
-      text: '👋🏻 SignUp',
-      id: '#SignUp'
-   }]
-}, {
-   quoted: message
-})
-
-// --- Buttons with Media & Native Flow
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '👆🏻 Buttons and Native Flow!',
-   footer: '@itsliaaa/baileys',
-   buttons: [{
-      text: '👋🏻 Rating',
-      id: '#Rating'
-   }, {
-      text: '📋 Select',
-      sections: [{
-         title: '✨ Section 1',
-         rows: [{
-            header: '',
-            title: '💭 Secret Ingredient',
-            description: '',
-            id: '#SecretIngredient'
-         }]
-      }, {
-         title: '✨ Section 2',
-         highlight_label: '🔥 Popular',
-         rows: [{
-            header: '',
-            title: '🏷️ Coupon',
-            description: '',
-            id: '#CouponCode'
-         }]
-      }]
-   }]
-}, {
-   quoted: message
-})
-```
-
-#### 📋 List
-
-> [!NOTE]
-> It only works in private chat (`@s.whatsapp.net`).
-
-```javascript
-sock.sendMessage(jid, {
-   text: '📋 List!',
-   footer: '@itsliaaa/baileys',
-   buttonText: '📋 Select',
-   title: '👋🏻 Hello',
-   sections: [{
-      title: '🚀 Menu 1',
-      rows: [{
-         title: '✨ AI',
-         description: '',
-         rowId: '#AI'
-      }]
-   }, {
-      title: '🌱 Menu 2',
-      rows: [{
-         title: '🔍 Search',
-         description: '',
-         rowId: '#Search'
-      }]
-   }]
-}, {
-   quoted: message
-})
-```
-
-#### 🗄️ Interactive
-
-```javascript
-// --- Native Flow
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '🗄️️ Interactive!',
-   footer: '@itsliaaa/baileys',
-   optionText: '👉🏻 Select Options', // --- Optional, wrap all native flow into a single list
-   optionTitle: '📄 Select Options', // --- Optional
-   offerText: '🏷️ Newest Coupon!', // --- Optional, add an offer into message
-   offerCode: '@itsliaaa/baileys', // --- Optional
-   offerUrl: 'https://www.npmjs.com/package/@itsliaaa/baileys', // --- Optional
-   offerExpiration: Date.now() + 3_600_000, // --- Optional
-   nativeFlow: [{
-      text: '👋🏻 Greeting',
-      id: '#Greeting',
-      icon: 'review' // --- Optional
-   }, {
-      text: '📞 Call',
-      call: '628123456789'
-   }, {
-      text: '📋 Copy',
-      copy: '@itsliaaa/baileys'
-   }, {
-      text: '🌐 Source',
-      url: 'https://www.npmjs.com/package/@itsliaaa/baileys',
-      useWebview: true // --- Optional
-   }, {
-      text: '📋 Select',
-      sections: [{
-         title: '✨ Section 1',
-         rows: [{
-            header: '',
-            title: '🏷️ Coupon',
-            description: '',
-            id: '#CouponCode'
-         }]
-      }, {
-         title: '✨ Section 2',
-         highlight_label: '🔥 Popular',
-         rows: [{
-            header: '',
-            title: '💭 Secret Ingredient',
-            description: '',
-            id: '#SecretIngredient'
-         }]
-      }],
-      icon: 'default' // --- Optional
-   }],
-   interactiveAsTemplate: false, // --- Optional, wrap the interactive message into a template
-}, {
-   quoted: message
-})
-
-// --- Carousel & Native Flow
-sock.sendMessage(jid, {
-   text: '🗂️ Interactive with Carousel!',
-   footer: '@itsliaaa/baileys',
-   cards: [{
-      image: {
-         url: './path/to/image.jpg'
-      },
-      caption: '🖼️ Image 1',
-      footer: '🏷️️ Pinterest',
-      nativeFlow: [{
-         text: '🌐 Source',
-         url: 'https://www.npmjs.com/package/@itsliaaa/baileys',
-         useWebview: true
-      }]
-   }, {
-      image: {
-         url: './path/to/image.jpg'
-      },
-      caption: '🖼️ Image 2',
-      footer: '🏷️ Pinterest',
-      offerText: '🏷️ New Coupon!',
-      offerCode: '@itsliaaa/baileys',
-      offerUrl: 'https://www.npmjs.com/package/@itsliaaa/baileys',
-      offerExpiration: Date.now() + 3_600_000,
-      nativeFlow: [{
-         text: '🌐 Source',
-         url: 'https://www.npmjs.com/package/@itsliaaa/baileys'
-      }]
-   }, {
-      image: {
-         url: './path/to/image.jpg'
-      },
-      caption: '🖼️ Image 3',
-      footer: '🏷️ Pinterest',
-      optionText: '👉🏻 Select Options',
-      optionTitle: '👉🏻 Select Options',
-      offerText: '🏷️ New Coupon!',
-      offerCode: '@itsliaaa/baileys',
-      offerUrl: 'https://www.npmjs.com/package/@itsliaaa/baileys',
-      offerExpiration: Date.now() + 3_600_000,
-      nativeFlow: [{
-         text: '🛒 Product',
-         id: '#Product',
-         icon: 'default'
-      }, {
-         text: '🌐 Source',
-         url: 'https://www.npmjs.com/package/@itsliaaa/baileys'
-      }]
-   }]
-}, {
-   quoted: message
-})
-
-// --- Native Flow with Audio in the Footer
-sock.sendMessage(jid, {
-   text: '🔈 Music in the footer!',
-   audioFooter: {
-      url: './path/to/audio.mp3'
-   }, // --- Like other media upload methods, buffers and streams are supported
-   nativeFlow: [{
-      text: '👍🏻 Good, next',
-      id: '#Next',
-      icon: 'review'
-   }, {
-      text: '👎🏻 Skip',
-      id: '#Skip',
-      icon: 'default'
-   }]
-}, {
-   quoted: message
-})
-```
-
-#### 🫙 Hydrated Template
-
-```javascript
-sock.sendMessage(jid, {
-   title: '👋🏻 Hello',
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '🫙 Template!',
-   footer: '@itsliaaa/baileys',
-   templateButtons: [{
-      text: '👉?? Tap Here',
-      id: '#Order'
-   }, {
-      text: '🌐 Source',
-      url: 'https://www.npmjs.com/package/@itsliaaa/baileys'
-   }, {
-      text: '📞 Call',
-      call: '628123456789'
-   }]
-}, {
-   quoted: message
-})
-```
-
-### 💳 Sending Payment Messages
-
-#### ➕ Invite Payment
-
-```javascript
-sock.sendMessage(jid, {
-   paymentInviteServiceType: 3 // 1, 2, or 3
-})
-```
-
-#### 🧾 Invoice
-
-> [!NOTE]
-> Invoice message are not supported yet.
-
-```javascript
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   invoiceNote: '🏷️ Invoice'
-})
-```
-
-#### 🛍️ Order
-
-```javascript
-sock.sendMessage(chat, {
-   orderText: '🛍️ Order',
-   thumbnail: fs.readFileSync('./path/to/image.jpg') // --- Must in buffer format
-}, {
-   quoted: message
-})
-```
-
-#### 💳 Request Payment
-
-```javascript
-sock.sendMessage(jid, {
-   text: '💳 Request Payment',
-   requestPaymentFrom: '0@s.whatsapp.net'
-})
-```
-
-### 👁️ Other Message Options
-
-#### 🤖 AI Icon
-
-> [!NOTE]
-> It only works in private chat (`@s.whatsapp.net`).
-
-```javascript
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '🤖 With AI icon!',
-   ai: true
-}, {
-   quoted: message
-})
-```
-
-#### 🕒 Ephemeral
-
-> [!NOTE]
-> Wrap message into `ephemeralMessage`
-
-```javascript
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '👁️ Ephemeral',
-   ephemeral: true
-})
-```
-
-#### 📰 External Ad Reply
-
-> [!NOTE]
-> Add an ad thumbnail to messages (may not be displayed on some WhatsApp versions).
-
-```javascript
-sock.sendMessage(jid, {
-   text: '📰 External Ad Reply',
-   externalAdReply: {
-      title: '📝 Did you know?',
-      body: '❓ I dont know',
-      thumbnail: fs.readFileSync('./path/to/image.jpg'), // --- Must in buffer format
-      largeThumbnail: false, // --- Or true for bigger thumbnail
-      url: 'https://www.npmjs.com/package/@itsliaaa/baileys' // --- Optional, used for WhatsApp internal thumbnail caching and direct URL
+   stickerPack: {
+      name: 'Casileys Pack',
+      publisher: 'Casileys',
+      description: 'Casileys sticker pack'
    }
 }, {
    quoted: message
 })
 ```
 
-#### 🧑‍🧑‍🧒 Group Status
+---
 
-> [!NOTE]
-> It only works in group chat (`@g.us`)
+## 👉🏻 Interactive Messages
 
-```javascript
+### 🔘 Buttons
+
+```js
 sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '👥 Group Status!',
-   groupStatus: true
+   buttons: [
+      {
+         buttonId: 'id1',
+         buttonText: {
+            displayText: 'Button 1'
+         },
+         type: 1
+      },
+      {
+         buttonId: 'id2',
+         buttonText: {
+            displayText: 'Button 2'
+         },
+         type: 1
+      }
+   ],
+   text: 'Select an option',
+   footer: 'Casileys'
+}, {
+   quoted: message
 })
 ```
 
-#### 🐱 Lottie Sticker
+### 📋 List
 
-> [!NOTE]
-> Wrap message into `lottieStickerMessage`
+```js
+sock.sendMessage(jid, {
+   text: 'Select an option',
+   footer: 'Casileys',
+   title: 'Casileys Menu',
+   buttonText: 'Open',
+   sections: [
+      {
+         title: 'Menu',
+         rows: [
+            {
+               title: 'Option 1',
+               description: 'First option',
+               rowId: 'option_1'
+            },
+            {
+               title: 'Option 2',
+               description: 'Second option',
+               rowId: 'option_2'
+            }
+         ]
+      }
+   ]
+}, {
+   quoted: message
+})
+```
 
-```javascript
+### 🗄️ Interactive
+
+```js
+sock.sendMessage(jid, {
+   interactiveMessage: {
+      body: {
+         text: 'Casileys Interactive'
+      },
+      footer: {
+         text: 'Select an action'
+      },
+      nativeFlowMessage: {
+         buttons: [
+            {
+               name: 'quick_reply',
+               buttonParamsJson: JSON.stringify({
+                  display_text: 'Open',
+                  id: 'open'
+               })
+            }
+         ]
+      }
+   }
+}, {
+   quoted: message
+})
+```
+
+### 🫙 Hydrated Template
+
+```js
+sock.sendMessage(jid, {
+   hydratedTemplate: {
+      hydratedContentText: 'Casileys',
+      hydratedFooterText: 'WhatsApp Web API',
+      hydratedButtons: [
+         {
+            quickReplyButton: {
+               displayText: 'Open',
+               id: 'open'
+            }
+         }
+      ]
+   }
+}, {
+   quoted: message
+})
+```
+
+---
+
+## 💳 Sending Payment Messages
+
+Payment-related structures are exposed through the corresponding message types.
+
+### ➕ Invite Payment
+
+```js
+sock.sendMessage(jid, {
+   paymentInviteMessage: {
+      serviceType: 3,
+      expiryTimestamp: Math.floor(Date.now() / 1000) + 86400
+   }
+}, {
+   quoted: message
+})
+```
+
+### 🧾 Invoice
+
+Invoice support depends on the currently supported WhatsApp message schema.
+
+### 🛍️ Order
+
+```js
+sock.sendMessage(jid, {
+   orderMessage: {
+      orderId: 'ORDER_ID',
+      itemCount: 1,
+      status: 1,
+      surface: 1,
+      message: 'Casileys Order',
+      orderTitle: 'Example Product',
+      sellerJid: '0@s.whatsapp.net',
+      token: 'ORDER_TOKEN'
+   }
+}, {
+   quoted: message
+})
+```
+
+### 💳 Request Payment
+
+```js
+sock.sendMessage(jid, {
+   requestPaymentMessage: {
+      currencyCodeIso4217: 'IDR',
+      amount1000: 1000000,
+      noteMessage: {
+         extendedTextMessage: {
+            text: 'Payment request'
+         }
+      }
+   }
+}, {
+   quoted: message
+})
+```
+
+---
+
+## 👁️ Other Message Options
+
+### 🤖 AI Icon
+
+```js
+sock.sendMessage(jid, {
+   text: 'Casileys',
+   ai: true
+})
+```
+
+### 🕒 Ephemeral
+
+```js
+sock.sendMessage(jid, {
+   ephemeral: true,
+   text: 'Ephemeral message'
+})
+```
+
+### 📰 External Ad Reply
+
+```js
+sock.sendMessage(jid, {
+   text: 'Check this out.',
+   externalAdReply: {
+      title: 'Casileys',
+      body: 'WhatsApp Web API',
+      thumbnail: fs.readFileSync('./thumbnail.jpg'),
+      mediaType: 1,
+      renderLargerThumbnail: true,
+      sourceUrl: 'YOUR_SOURCE_URL'
+   }
+})
+```
+
+### 📑 Spoiler
+
+```js
+sock.sendMessage(jid, {
+   spoiler: true,
+   text: 'Spoiler message'
+})
+```
+
+### 👁️ View Once
+
+```js
+sock.sendMessage(jid, {
+   viewOnce: true,
+   image: {
+      url: './path/to/image.jpg'
+   }
+})
+```
+
+### 👁️ View Once V2
+
+```js
+sock.sendMessage(jid, {
+   viewOnceV2: true,
+   video: {
+      url: './path/to/video.mp4'
+   }
+})
+```
+
+### 👁️ View Once V2 Extension
+
+```js
+sock.sendMessage(jid, {
+   viewOnceV2Extension: true,
+   image: {
+      url: './path/to/image.jpg'
+   }
+})
+```
+
+### 🐱 Lottie Sticker
+
+```js
 sock.sendMessage(jid, {
    sticker: {
-      url: './path/to/sticker.webp'
+      url: './path/to/animation.webp'
    },
    isLottie: true
 })
 ```
 
-#### 🧩 Raw
+### 🏷️ Secure Meta Service Label
 
-```javascript
+```js
 sock.sendMessage(jid, {
-   extendedTextMessage: {
-      text: '📃 Built manually from scratch using the raw WhatsApp proto structure',
-      contextInfo: {
-         externalAdReply: {
-            title: '@itsliaaa/baileys',
-            thumbnail: fs.readFileSync('./path/to/image.jpg'),
-            sourceApp: 'whatsapp',
-            showAdAttribution: true,
-            mediaType: 1
-         }
-      }
-   },
-   raw: true
-}, {
-   quoted: message
-})
-```
-
-#### 🏷️ Secure Meta Service Label
-
-```javascript
-sock.sendMessage(jid, {
-   text: '🏷️ Just a label!',
+   text: 'Casileys',
    secureMetaServiceLabel: true
 })
 ```
 
-#### 📑 Spoiler
+### 🧩 Raw
 
-> [!NOTE]
-> Wrap message into `spoilerMessage`
-
-```javascript
+```js
 sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '❔ Spoiler',
-   spoiler: true
+   raw: {
+      message: {
+         conversation: 'Raw message'
+      }
+   }
 })
 ```
 
-#### 👁️ View Once
+---
 
-> [!NOTE]
-> Wrap message into `viewOnceMessage`
+## 🧑‍🧑‍🧒 Group Status
 
-```javascript
+Casileys adds a dedicated helper for publishing group status content.
+
+**Direct message option**
+
+```js
 sock.sendMessage(jid, {
+   groupStatus: true,
    image: {
       url: './path/to/image.jpg'
    },
-   caption: '👁️ View Once',
-   viewOnce: true
+   caption: 'Group Status'
 })
 ```
 
-#### 👁️ View Once V2
+**Helper API**
 
-> [!NOTE]
-> Wrap message into `viewOnceMessageV2`
-
-```javascript
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '👁️ View Once V2',
-   viewOnceV2: true
-})
+```js
+import {
+   sendGroupStatusText,
+   sendGroupStatusImage,
+   sendGroupStatusVideo,
+   sendGroupStatusAudio,
+   sendGroupStatusSticker
+} from '@kaels/casileys'
 ```
 
-#### 👁️ View Once V2 Extension
+**Text**
 
-> [!NOTE]
-> Wrap message into `viewOnceMessageV2Extension`
-
-```javascript
-sock.sendMessage(jid, {
-   image: {
-      url: './path/to/image.jpg'
-   },
-   caption: '👁️ View Once V2 Extension',
-   viewOnceV2Extension: true
-})
+```js
+await sendGroupStatusText(
+   sock,
+   '120000000000000000@g.us',
+   'Hello from Casileys'
+)
 ```
 
-### ♻️ Modify Messages
+**Image**
 
-#### 🗑️ Delete Messages
+```js
+import fs from 'fs'
 
-```javascript
+await sendGroupStatusImage(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./image.jpg'),
+   {
+      caption: 'Casileys Group Status'
+   }
+)
+```
+
+**Video**
+
+```js
+import fs from 'fs'
+
+await sendGroupStatusVideo(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./video.mp4'),
+   {
+      caption: 'Casileys Group Status'
+   }
+)
+```
+
+**Audio**
+
+```js
+import fs from 'fs'
+
+await sendGroupStatusAudio(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./audio.ogg'),
+   {
+      mimetype: 'audio/ogg; codecs=opus',
+      ptt: true
+   }
+)
+```
+
+**Sticker**
+
+```js
+import fs from 'fs'
+
+await sendGroupStatusSticker(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./sticker.webp'),
+   {
+      caption: 'Casileys Group Status'
+   }
+)
+```
+
+**WebP support**
+
+The helper can process WebP sticker input:
+
+| Input | Result |
+|---|---|
+| Static WebP | Image |
+| Animated WebP | Video |
+| JPEG / PNG | Image |
+| MP4 | Video |
+| OGG / Opus | Audio |
+| Text | Text |
+
+Animated WebP conversion uses FFmpeg.
+
+---
+
+## ♻️ Modify Messages
+
+### 🗑️ Delete
+
+```js
 sock.sendMessage(jid, {
    delete: message.key
 })
 ```
 
-#### ✏️ Edit Messages
+### ✏️ Edit
 
-```javascript
-// --- Edit plain text
+```js
 sock.sendMessage(jid, {
-   text: '✨ I mean, nice!',
-   edit: message.key
-})
-
-// --- Edit media messages caption
-sock.sendMessage(jid, {
-   caption: '✨ I mean, here is the image!',
+   text: 'Edited message'
+}, {
    edit: message.key
 })
 ```
 
-### 🧰 Additional Contents
+---
 
-#### 🏷️ Find User ID (JID|PN/LID)
+## 🧰 Additional Contents
 
-> [!NOTE]
-> The ID must contain numbers only (no +, (), or -) and must include the country code with WhatsApp ID format.
+### 🏷️ Find User ID
 
-```javascript
-// --- PN (Phone Number)
-const phoneNumber = '6281111111111@s.whatsapp.net'
+```js
+const result = await sock.onWhatsApp(
+   '628123456789'
+)
 
-const ids = await sock.findUserId(phoneNumber)
-
-console.log('🏷️ Got user ID', ':', ids)
-
-// --- LID (Local Identifier)
-const lid = '43411111111111@lid'
-
-const ids = await sock.findUserId(lid)
-
-console.log('🏷️ Got user ID', ':', ids)
-
-// --- Output
-// {
-//    phoneNumber: '6281111111111@s.whatsapp.net',
-//    lid: '43411111111111@lid'
-// }
-// --- Output when failed
-// {
-//    phoneNumber: '6281111111111@s.whatsapp.net',
-//    lid: undefined
-// }
-// --- Same output shape regardless of input type
+console.log(result)
 ```
 
-#### 🔑 Request Custom Pairing Code
+### 🔑 Request Custom Pairing Code
 
-> [!NOTE]
-> The phone number must contain numbers only (no +, (), or -) and must include the country code.
+```js
+const code = await sock.requestPairingCode(
+   '628123456789'
+)
 
-```javascript
-const phoneNumber = '6281111111111'
-const customPairingCode = 'STARFALL'
-
-await sock.requestPairingCode(phoneNumber, customPairingCode)
-
-console.log('🔗 Pairing code', ':', customPairingCode)
+console.log(code)
 ```
 
-#### 🖼️ Image Processing
+### 🖼️ Image Processing
 
-> [!NOTE]
-> Automatically use available image processing library: `sharp`, `@napi-rs/image`, or `jimp`
+```js
+const imageLibrary =
+   await getImageProcessingLibrary()
 
-```javascript
-import { getImageProcessingLibrary } from '@itsliaaa/baileys'
-import { readFile } from 'fs/promises'
+console.log(imageLibrary)
+```
 
-const lib = await getImageProcessingLibrary()
+---
 
-const bufferOrFilePath = './path/to/image.jpg'
-const width = 512
+## 📣 Newsletter Management
 
-let output
+Newsletter JIDs use:
 
-// --- If sharp installed
-if (lib.sharp?.default) {
-   const img = lib.sharp.default(bufferOrFilePath)
+```
+123456789012345678@newsletter
+```
 
-   output = await img.resize(width)
-      .jpeg({ quality: 80 })
-      .toBuffer()
+Example:
+
+```js
+const newsletterJid =
+   '123456789012345678@newsletter'
+
+await sock.sendMessage(
+   newsletterJid,
+   {
+      text: 'Hello from Casileys'
+   }
+)
+```
+
+Newsletter media and message operations use the same socket/message infrastructure.
+
+---
+
+## 👥 Group Management
+
+**Fetch groups**
+
+```js
+const groups =
+   await sock.groupFetchAllParticipating()
+
+console.log(groups)
+```
+
+**Create group**
+
+```js
+const group =
+   await sock.groupCreate(
+      'Casileys Community',
+      [
+         '628123456789@s.whatsapp.net'
+      ]
+   )
+
+console.log(group)
+```
+
+**Update participants**
+
+```js
+await sock.groupParticipantsUpdate(
+   '120000000000000000@g.us',
+   [
+      '628123456789@s.whatsapp.net'
+   ],
+   'add'
+)
+```
+
+The participant action can be changed to:
+
+| Action | Description |
+|---|---|
+| `add` | Add a participant to the group |
+| `remove` | Remove a participant from the group |
+| `promote` | Promote a participant to admin |
+| `demote` | Demote a participant from admin |
+
+**Update subject**
+
+```js
+await sock.groupUpdateSubject(
+   '120000000000000000@g.us',
+   'Casileys Community'
+)
+```
+
+**Update description**
+
+```js
+await sock.groupUpdateDescription(
+   '120000000000000000@g.us',
+   'Community powered by Casileys.'
+)
+```
+
+**Leave**
+
+```js
+await sock.groupLeave(
+   '120000000000000000@g.us'
+)
+```
+
+---
+
+## 👥 Community Management
+
+Community-related operations use the group/community methods provided by the socket and WhatsApp protocol.
+
+---
+
+## 👤 Profile Management
+
+**Profile picture**
+
+```js
+const profilePicture =
+   await sock.profilePictureUrl(
+      '628123456789@s.whatsapp.net',
+      'image'
+   )
+
+console.log(profilePicture)
+```
+
+**Update profile picture**
+
+```js
+await sock.updateProfilePicture(
+   sock.user.id,
+   {
+      url: './profile.jpg'
+   }
+)
+```
+
+**Update profile status**
+
+```js
+await sock.updateProfileStatus(
+   'Powered by Casileys'
+)
+```
+
+---
+
+## 🛒 Business Management
+
+Business messages can be sent through the same message API.
+
+Product structures can contain fields such as:
+
+```js
+{
+   currencyCode: 'IDR',
+   priceAmount1000: 1000000,
+   productId: 'product-id',
+   productImageCount: 1,
+   title: 'Casileys Product',
+   description: 'Product description',
+   url: 'YOUR_PRODUCT_URL'
 }
-
-// --- If @napi-rs/image installed
-else if (lib.image?.Transformer) {
-   // --- Must in buffer format
-   const inputBuffer = Buffer.isBuffer(bufferOrFilePath)
-      ? bufferOrFilePath
-      : await readFile(bufferOrFilePath)
-
-   const img = new lib.image.Transformer(inputBuffer)
-
-   output = await img.resize(width, undefined, 0)
-      .jpeg(50)
-}
-
-// --- If jimp installed
-else if (lib.jimp?.Jimp) {
-   const img = await lib.jimp.Jimp.read(bufferOrFilePath)
-
-   output = await img
-      .resize({ w: width, mode: lib.jimp.ResizeStrategy.BILINEAR })
-      .getBuffer('image/jpeg', { quality: 50 })
-}
-
-// --- Fallback
-else {
-   throw new Error('No image processing available')
-}
-
-console.log('✅ Process completed!')
-console.dir(output, { depth: null })
 ```
 
-#### 📣 Newsletter Management
+---
 
-```javascript
-// --- Create a new one
-sock.newsletterCreate('@itsliaaa/baileys', '📣 Fresh updates weekly')
+## 🔐 Privacy Management
 
-// --- Get info
-const metadata = sock.newsletterMetadata('1231111111111@newsletter')
-console.dir(metadata, { depth: null })
+```js
+const privacy =
+   await sock.fetchPrivacySettings()
 
-// --- Get subscribers count
-const subscribers = await sock.newsletterSubscribers('1231111111111@newsletter')
-console.dir(subscribers, { depth: null })
-
-// --- Follow and Unfollow
-sock.newsletterFollow('1231111111111@newsletter')
-sock.newsletterUnfollow('1231111111111@newsletter')
-
-// --- Mute and Unmute
-sock.newsletterMute('1231111111111@newsletter')
-sock.newsletterUnmute('1231111111111@newsletter')
-
-// --- Demote admin
-sock.newsletterDemote('1231111111111@newsletter', '6281111111111@s.whatsapp.net')
-
-// --- Change owner
-sock.newsletterChangeOwner('1231111111111@newsletter', '6281111111111@s.whatsapp.net')
-
-// --- Update newsletter
-sock.newsletterUpdate('1231111111111@newsletter', { name: '@itsliaaa/baileys' })
-
-// --- Change name
-sock.newsletterUpdateName('1231111111111@newsletter', '📦 @itsliaaa/baileys')
-
-// --- Change description
-sock.newsletterUpdateDescription('1231111111111@newsletter', '📣 Fresh updates weekly')
-
-// --- Change photo
-sock.newsletterUpdatePicture('1231111111111@newsletter', {
-   url: 'path/to/image.jpg'
-})
-
-// --- Remove photo
-sock.newsletterRemovePicture('1231111111111@newsletter')
-
-// --- React to a message
-sock.newsletterReactMessage('1231111111111@newsletter', '100', '💛')
-
-// --- Get admin count
-const count = await sock.newsletterAdminCount('1231111111111@newsletter')
-
-// --- Get all subscribed newsletters
-const newsletters = await sock.newsletterSubscribed()
-console.dir(newsletters, { depth: null })
-
-// --- Fetch newsletter messages
-const messages = sock.newsletterFetchMessages('jid', '1231111111111@newsletter', 50, 0, 0)
-console.dir(messages, { depth: null })
-
-// --- Delete newsletter
-sock.newsletterDelete('1231111111111@newsletter')
+console.log(privacy)
 ```
 
-#### 👥 Group Management
+---
 
-```javascript
-// --- Create a new one and add participants using their JIDs
-const group = sock.groupCreate('@itsliaaa/baileys', ['628123456789@s.whatsapp.net'])
-console.dir(group, { depth: null })
+## 📡 Events
 
-// --- Get info
-const metadata = await sock.groupMetadata(jid)
-console.dir(metadata, { depth: null })
+Casileys exposes WhatsApp events through `sock.ev`.
 
-// --- Get group invite code
-const inviteCode = await sock.groupInviteCode(jid)
-console.dir(inviteCode, { depth: null })
+**Messages**
 
+```js
+sock.ev.on('messages.upsert', async ({ messages }) => {
+   for (const message of messages) {
+      if (!message.message) continue
 
-// --- Revoke invite link
-sock.groupRevokeInvite(jid)
-
-// --- Accept group invite
-sock.groupAcceptInvite(inviteCode)
-
-// --- Leave group
-sock.groupLeave(jid)
-
-// --- Add participants
-sock.groupParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'add')
-
-// --- Remove participants
-sock.groupParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'remove')
-
-// --- Promote to admin
-sock.groupParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'promote')
-
-// --- Demote from admin
-sock.groupParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'demote')
-
-// --- Accept join requests
-sock.groupRequestParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'approve')
-
-// --- Change name
-sock.groupUpdateSubject(jid, '📦 @itsliaaa/baileys')
-
-// --- Change description
-sock.groupUpdateDescription(jid, 'Updated description')
-
-// --- Change photo
-sock.updateProfilePicture(jid, {
-   url: 'path/to/image.jpg'
-})
-
-// --- Remove photo
-sock.removeProfilePicture(jid)
-
-// --- Set group as admin only for chatting
-sock.groupSettingUpdate(jid, 'announcement')
-
-// --- Set group as open to all for chatting
-sock.groupSettingUpdate(jid, 'not_announcement')
-
-// --- Set admin only can edit group info
-sock.groupSettingUpdate(jid, 'locked')
-
-// --- Set all participants can edit group info
-sock.groupSettingUpdate(jid, 'unlocked')
-
-// --- Set admin only can add participants
-sock.groupMemberAddMode(jid, 'admin_add')
-
-// --- Set all participants can add participants
-sock.groupMemberAddMode(jid, 'all_member_add')
-
-// --- Enable or disable temporary messages with seconds format
-sock.groupToggleEphemeral(jid, 86400)
-
-// --- Disable temporary messages
-sock.groupToggleEphemeral(jid, 0)
-
-// --- Enable or disable membership approval mode
-sock.groupJoinApprovalMode(jid, 'on')
-sock.groupJoinApprovalMode(jid, 'off')
-
-// --- Get all groups metadata
-const groups = await sock.groupFetchAllParticipating()
-console.dir(groups, { depth: null })
-
-// --- Get pending join requests
-const requests = await sock.groupRequestParticipantsList(jid)
-console.dir(requests, { depth: null })
-
-// --- Get group info from link
-const group = await sock.groupGetInviteInfo('ABC123456789')
-console.log('👥 Got group info from invite code', ':', group)
-
-// --- Update bot member label
-sock.updateMemberLabel(jid, '@itsliaaa/baileys')
-```
-
-#### 👥 Community Management
-
-```javascript
-// --- Create a new one and add description
-const community = await sock.communityCreate('@itsliaaa/baileys', '📣 Fresh updates weekly')
-console.dir(community, { depth: null })
-
-// --- Create a subgroup for community and add participants using their JIDs
-const group = await sock.communityCreateGroup('📢 Announcements', ['628123456789@s.whatsapp.net'], communityJid)
-
-// --- Link an existing group
-sock.communityLinkGroup(groupJid, communityJid)
-
-// --- Unlink an existing group
-sock.communityUnlinkGroup(groupJid, communityJid)
-
-// --- Get info
-const metadata = await sock.communityMetadata(jid)
-console.dir(metadata, { depth: null })
-
-// --- Get community invite code
-const inviteCode = await sock.communityInviteCode(jid)
-console.dir(inviteCode, { depth: null })
-
-// --- Revoke invite link
-sock.communityRevokeInvite(jid)
-
-// --- Accept community invite
-sock.communityAcceptInvite(inviteCode)
-
-// --- Leave community
-sock.communityLeave(jid)
-
-// --- Accept join requests
-sock.communityRequestParticipantsUpdate(jid, ['628123456789@s.whatsapp.net'], 'approve')
-
-// --- Change name
-sock.communityUpdateSubject(jid, '📦 @itsliaaa/baileys')
-
-// --- Change description
-sock.communityUpdateDescription(jid, 'Updated description')
-
-// --- Set community as admin only for chatting
-sock.communitySettingUpdate(jid, 'announcement')
-
-// --- Set community as open to all for chatting
-sock.communitySettingUpdate(jid, 'not_announcement')
-
-// --- Set admin only can edit community info
-sock.communitySettingUpdate(jid, 'locked')
-
-// --- Set all participants can edit community info
-sock.communitySettingUpdate(jid, 'unlocked')
-
-// --- Set admin only can add participants
-sock.communityMemberAddMode(jid, 'admin_add')
-
-// --- Set all participants can add participants
-sock.communityMemberAddMode(jid, 'all_member_add')
-
-// --- Enable or disable temporary messages with seconds format
-sock.communityToggleEphemeral(jid, 86400)
-
-// --- Disable temporary messages
-sock.communityToggleEphemeral(jid, 0)
-
-// --- Enable or disable membership approval mode
-sock.communityJoinApprovalMode(jid, 'on')
-sock.communityJoinApprovalMode(jid, 'off')
-
-// --- Get all communities metadata
-const communities = await sock.communityFetchAllParticipating()
-console.dir(communities, { depth: null })
-
-// --- Get all community linked groups
-const linked = await sock.communityFetchLinkedGroups(jid)
-console.dir(linked, { depth: null })
-
-// --- Get pending join requests
-const requests = await sock.communityRequestParticipantsList(jid)
-console.dir(requests, { depth: null })
-
-// --- Get community info from link
-const community = await sock.communityGetInviteInfo('ABC123456789')
-console.log('👥 Got community info from invite code', ':', community)
-```
-
-#### 👤 Profile Management
-
-```javascript
-// --- Get user profile picture
-const url = await sock.profilePictureUrl(jid, 'image')
-console.log('🖼️ Got user profile url', url)
-
-// --- Update profile picture
-sock.updateProfilePicture(jid, buffer)
-sock.updateProfilePicture(jid, { url })
-
-// --- Remove profile picture
-sock.removeProfilePicture(jid)
-
-// --- Update profile name
-sock.updateProfileName('My Name')
-
-// --- Update profile status
-sock.updateProfileStatus('Available')
-
-// --- Presence
-sock.sendPresenceUpdate('available', jid)
-sock.presenceSubscribe(jid)
-
-// --- Read receipts
-sock.readMessages([message.key])
-sock.sendReceipt(jid, participant, [messageId], 'read')
-
-// --- Block user
-sock.updateBlockStatus(jid, 'block')
-
-// --- Unblock user
-sock.updateBlockStatus(jid, 'unblock')
-
-// --- Fetch blocklist
-const blocked = await sock.fetchBlocklist()
-console.dir(blocked, { depth: null })
-
-// --- Modify chats
-sock.chatModify({
-   archive: true,
-   lastMessageOrig: message,
-   lastMessage: message
-}, jid)
-
-// --- Star messages
-sock.star(jid, [{ id: messageId, fromMe: true }], true)
-
-// --- Contact
-sock.addOrEditContact(jid, { displayName: 'Starseed' })
-sock.removeContact(jid)
-
-// --- Label
-sock.addChatLabel(jid, labelId)
-sock.removeChatLabel(jid, labelId)
-sock.addMessageLabel(jid, messageId, labelId)
-
-// --- App state sync
-sock.resyncAppState(['regular', 'critical_block'], true)
-
-// --- Get business profile
-const profile = await sock.getBusinessProfile(jid)
-console.dir(profile, { depth: null })
-```
-
-#### 🛒 Business Management
-
-```javascript
-// --- Create a new product
-const product = await sock.productCreate({
-   name: '🧩 Starseed (Premium)',
-   description: 'Get a full version of Starseed!',
-   price: 100000,
-   currency: 'IDR',
-   originCountryCode: 'ID',
-   images: [
-      bufferImage,
-      {
-         url: './path/to/image.jpg'
-      }
-   ]
-})
-console.dir(product, { depth: null })
-
-// --- Update product
-await sock.productUpdate(productId, {
-   name: '🧩 Starseed (Premium)',
-   description: 'Get a full version of Starseed with more features!',
-   price: 75000,
-   currency: 'IDR',
-   images: [
-      {
-         url: './path/to/image.jpg'
-      }
-   ]
-})
-
-// --- Delete product
-sock.productDelete([productId])
-
-// --- Get catalog info
-const { products, nextPageCursor } = await sock.getCatalog({
-  jid: '628123456789@s.whatsapp.net',
-  limit: 10
-})
-
-// --- Get collections
-const collections = await sock.getCollections('628123456789@s.whatsapp.net', 10)
-console.dir(collections, { depth: null })
-
-// --- Get order info
-const order = await sock.getOrderDetails(orderId, tokenBase64)
-console.dir(order, { depth: null })
-
-// --- Update business profile
-await sock.updateBusinessProfile({
-   address: 'Jakarta, Indonesia',
-   description: '🛒 Official Starseed Store',
-   websites: ['https://www.npmjs.com/package/@itsliaaa/baileys'],
-   email: 'more-more@gmail.com',
-   hours: {
-      timezone: 'Asia/Jakarta',
-      days: [{ day: 'mon', mode: 'open_24h' }]
+      console.log(message)
    }
 })
+```
 
-// --- Update cover
-sock.updateCoverPhoto({
-   url: './path/to/image.jpg'
+**Connection**
+
+```js
+sock.ev.on('connection.update', (update) => {
+   const {
+      connection,
+      lastDisconnect
+   } = update
+
+   console.log({
+      connection,
+      lastDisconnect
+   })
 })
-
-// --- Remove cover
-sock.removeCoverPhoto(coverId)
-
-// --- Update quick replies
-sock.addOrEditQuickReply({
-  shortcut: 'hello',
-  message: 'Hello from business account',
-})
-
-// --- Remove quick reply
-sock.removeQuickReply(timestamp)
 ```
 
-#### 🔐 Privacy Management
+**Credentials**
 
-```javascript
-// --- Update last seen privacy
-sock.updateLastSeenPrivacy('all')
-sock.updateLastSeenPrivacy('contacts')
-sock.updateLastSeenPrivacy('contact_blacklist')
-sock.updateLastSeenPrivacy('nobody')
-
-// --- Update online privacy
-sock.updateOnlinePrivacy('all')
-sock.updateOnlinePrivacy('match_last_seen')
-
-// --- Update profile picture privacy
-sock.updateProfilePicturePrivacy('contacts')
-
-// --- Update status privacy
-sock.updateStatusPrivacy('contacts')
-
-// --- Update read receipts privacy
-sock.updateReadReceiptsPrivacy('all')
-sock.updateReadReceiptsPrivacy('none')
-
-// --- Update groups add privacy
-sock.updateGroupsAddPrivacy('all')
-sock.updateGroupsAddPrivacy('contacts')
-
-// --- Update messages privacy
-sock.updateMessagesPrivacy('all')
-sock.updateMessagesPrivacy('contacts')
-sock.updateMessagesPrivacy('nobody')
-
-// --- Update call privacy
-sock.updateCallPrivacy('everyone')
-
-// --- Update default disappearing mode
-sock.updateDefaultDisappearingMode(86400)
-
-// --- Update link previews privacy
-sock.updateDisableLinkPreviewsPrivacy(true)
+```js
+sock.ev.on('creds.update', saveCreds)
 ```
 
-#### 📡 Events
+---
 
-```javascript
-sock.ev.on('connection.update', (update) => {})
-sock.ev.on('creds.update', (update) => {})
-sock.ev.on('messaging-history.set', (update) => {})
-sock.ev.on('messaging-history.status', (update) => {})
-sock.ev.on('chats.upsert', (update) => {})
-sock.ev.on('chats.update', (update) => {})
-sock.ev.on('chats.delete', (update) => {})
-sock.ev.on('chats.lock', (update) => {})
-sock.ev.on('lid-mapping.update', (update) => {})
-sock.ev.on('presence.update', (update) => {})
-sock.ev.on('contacts.upsert', (update) => {})
-sock.ev.on('contacts.update', (update) => {})
-sock.ev.on('messages.delete', (update) => {})
-sock.ev.on('messages.update', (update) => {})
-sock.ev.on('messages.media-update', (update) => {})
-sock.ev.on('messages.upsert', (update) => {})
-sock.ev.on('messages.reaction', (update) => {})
-sock.ev.on('message-receipt.update', (update) => {})
-sock.ev.on('groups.upsert', (update) => {})
-sock.ev.on('groups.update', (update) => {})
-sock.ev.on('group-participants.update', (update) => {})
-sock.ev.on('group.join-request', (update) => {})
-sock.ev.on('group.member-tag.update', (update) => {})
-sock.ev.on('blocklist.set', (update) => {})
-sock.ev.on('blocklist.update', (update) => {})
-sock.ev.on('call', (update) => {})
-sock.ev.on('labels.edit', (update) => {})
-sock.ev.on('labels.association', (update) => {})
-sock.ev.on('newsletter.reaction', (update) => {})
-sock.ev.on('newsletter.view', (update) => {})
-sock.ev.on('newsletter-participants.update', (update) => {})
-sock.ev.on('newsletter-settings.update', (update) => {})
-sock.ev.on('settings.update', (update) => {})
-```
+## ⚠️ Disclaimer
 
-### 🚀 Try the Bot
+Casileys is an independent fork based on existing Baileys-related projects.
 
-A fast, lightweight, and modular WhatsApp bot built with [@itsliaaa/baileys](https://www.npmjs.com/package/@itsliaaa/baileys).
-Perfect for managing groups, moderating chats, and adding fun with quiz games and handy tools.
+It is not affiliated with WhatsApp or Meta Platforms, Inc.
 
-👉🏻 [@itsliaaa/starseed](https://github.com/itsliaaa/starseed#readme)
+The project retains appropriate attribution to its upstream projects and contributors.
 
-A lightweight yet powerful Baileys wrapper designed to simplify development while extending support for additional message types and WhatsApp features.
+Fork reference: `https://github.com/itsliaa/baileys`
 
-👉🏻 [@itsliaaa/starcore](https://www.npmjs.com/package/@itsliaaa/starcore)
+Please respect the licenses and attribution requirements of the upstream projects when using or redistributing Casileys.
 
-### 📦 Fork Base
+---
 
-This fork is based on [Baileys (GitHub)](https://github.com/WhiskeySockets/Baileys)
+## 📣 Credits
 
-### 📣 Credits
+**Upstream**
 
-This fork uses Protocol Buffer definitions maintained by [WPP Connect](https://github.com/wppconnect-team) via [`wa-proto`](https://github.com/wppconnect-team/wa-proto)
+- WhiskeySockets / Baileys
+- Original Baileys maintainers and contributors
+- Contributors to the WhatsApp protocol ecosystem
 
-Full credit is attributed to the original maintainers and contributors of Baileys:
-- [purpshell](https://github.com/purpshell)
-- [jlucaso1](https://github.com/jlucaso1)
-- [adiwajshing](https://github.com/adiwajshing)
+**Fork Base**
 
-<!-- Please do not replace my name with yours. It's disrespectful. -->
+- ItsLiaaa / Baileys
+- Contributors to the fork base
 
-This fork includes additional enhancements and modifications by [Lia Wynn](https://github.com/itsliaaa)
+**Casileys**
 
-Special thanks to [itsreimau](https://github.com/itsreimau) for the fix to the `updateBlockStatus` implementation.
+- Casileys contributors and maintainers
+- Contributors to Casileys-specific improvements and utilities
 
-> [!CAUTION]
-> ⚠️ **Modification, removal, or misrepresentation of these credits is strictly prohibited. Any redistribution or fork must preserve this section in its original form without exception.**
+---
+
+## 📄 License
+
+Casileys is released under the MIT License.
+
+See [`LICENSE`](./LICENSE) for the complete license text.
