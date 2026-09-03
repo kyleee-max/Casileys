@@ -1,5 +1,5 @@
 {
-  "name": "@casileys/baileys",
+  "name": "@kaels/casileys",
   "version": "0.4.5",
   "description": "Casileys — Enhanced WhatsApp Web API based on Baileys.",
   "main": "lib/index.js",
