@@ -1,17 +1,18 @@
-<p align="center">
-  <img src="YOUR_THUMBNAIL_URL" alt="Casileys" width="180">
-</p>
 
 <h1 align="center">🌱 Casileys</h1>
+<p align="center">
+  <img src="./casileys-header.gif" alt="Casileys" width="100%">
+</p>
+
 
 <p align="center">
   A WhatsApp Web API library for Node.js, based on Baileys and extended with additional message types, media handling, interactive messages, newsletter support, and more.
 </p>
 
 <p align="center">
-  <a href="YOUR_NPM_URL"><img src="https://img.shields.io/npm/v/YOUR_NPM_PACKAGE?style=for-the-badge&logo=npm"/></a>
-  <a href="YOUR_NPM_URL"><img src="https://img.shields.io/npm/dm/YOUR_NPM_PACKAGE?style=for-the-badge&logo=npm"/></a>
-  <a href="YOUR_REPOSITORY_URL"><img src="https://img.shields.io/github/stars/YOUR_GITHUB_REPOSITORY?style=for-the-badge&logo=github"/></a>
+  <a href="https://npmjs.com/package/@kaels/casileys"><img src="https://img.shields.io/npm/v/@kaels/casileys?style=for-the-badge&logo=npm"/></a>
+  <a href="https://npmjs.com/package/@kaels/casileys"><img src="https://img.shields.io/npm/dm/@kaels/casileys?style=for-the-badge&logo=npm"/></a>
+  <a href="https://github.com/kyleee-max/casileys"><img src="https://img.shields.io/github/stars/kyleee-max/casileys?style=for-the-badge&logo=github"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&labelColor=green&logoColor=white&style=for-the-badge"/></a>
   <a href="#"><img src="https://img.shields.io/badge/ESM-only?logo=javascript&labelColor=yellow&logoColor=black&style=for-the-badge"/></a>
@@ -96,7 +97,7 @@ The message layer supports the following extended structures:
 
 ```json
 "dependencies": {
-   "YOUR_CASILEYS_PACKAGE": "latest"
+   "@kaels/casileys": "latest"
 }
 ```
 
@@ -104,20 +105,20 @@ The message layer supports the following extended structures:
 
 ```json
 "dependencies": {
-   "YOUR_CASILEYS_PACKAGE": "github:YOUR_GITHUB_REPOSITORY"
+   "@kaels/casileys": "github:kyleee-max/casileys"
 }
 ```
 
 **Terminal**
 
 ```bash
-npm i YOUR_CASILEYS_PACKAGE@latest
+npm i @kaels/casileys@latest
 ```
 
 Or directly from GitHub:
 
 ```bash
-npm i github:YOUR_GITHUB_REPOSITORY
+npm i github:kyleee-max/casileys
 ```
 
 ---
@@ -127,13 +128,13 @@ npm i github:YOUR_GITHUB_REPOSITORY
 **ESM**
 
 ```js
-import { makeWASocket } from 'YOUR_CASILEYS_PACKAGE'
+import { makeWASocket } from '@kaels/casileys'
 ```
 
 **CJS**
 
 ```js
-const { makeWASocket } = require('YOUR_CASILEYS_PACKAGE')
+const { makeWASocket } = require('@kaels/casileys')
 ```
 
 ---
@@ -141,7 +142,7 @@ const { makeWASocket } = require('YOUR_CASILEYS_PACKAGE')
 ## 🌐 Connect to WhatsApp
 
 ```js
-import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from 'YOUR_CASILEYS_PACKAGE'
+import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from '@kaels/casileys'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -204,7 +205,7 @@ Experimental alternatives such as `useSingleFileAuthState` and `useSqliteAuthSta
 ## 🗄️ Data Store
 
 ```js
-import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from 'YOUR_CASILEYS_PACKAGE'
+import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from '@kaels/casileys'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
@@ -307,7 +308,7 @@ sock.sendMessage(jid, {
 })
 
 // --- Send a text message with a link preview
-const urlA = 'https://www.npmjs.com/package/YOUR_CASILEYS_PACKAGE'
+const urlA = 'https://www.npmjs.com/package/@kaels/casileys'
 sock.sendMessage(jid, {
    text: urlA + ' 👆🏻 Check it out!',
    linkPreview: {
@@ -321,7 +322,7 @@ sock.sendMessage(jid, {
 
 // --- Send a text message with a large link preview and favicon
 import { prepareWAMessageMedia } from 'YOUR_CASILEYS_PACKAGE'
-const urlB = 'https://www.npmjs.com/package/YOUR_CASILEYS_PACKAGE#readme'
+const urlB = 'https://www.npmjs.com/package/@kaels/casileys#readme'
 
 const { imageMessage: image } = await prepareWAMessageMedia({
    image: {
@@ -1006,7 +1007,7 @@ import {
    sendGroupStatusVideo,
    sendGroupStatusAudio,
    sendGroupStatusSticker
-} from 'YOUR_CASILEYS_PACKAGE'
+} from '@kaels/casileys'
 ```
 
 **Text**
@@ -1364,17 +1365,6 @@ sock.ev.on('creds.update', saveCreds)
 
 ---
 
-## 🔗 Project Resources
-
-| Resource | URL |
-|---|---|
-| Repository | `YOUR_REPOSITORY_URL` |
-| NPM | `YOUR_NPM_URL` |
-| Chatbot | `YOUR_CHATBOT_URL` |
-| Thumbnail | `YOUR_THUMBNAIL_URL` |
-
----
-
 ## ⚠️ Disclaimer
 
 Casileys is an independent fork based on existing Baileys-related projects.
@@ -1383,7 +1373,7 @@ It is not affiliated with WhatsApp or Meta Platforms, Inc.
 
 The project retains appropriate attribution to its upstream projects and contributors.
 
-Fork reference: `YOUR_ITSLIAAA_URL`
+Fork reference: `https://github.com/itsliaa/baileys`
 
 Please respect the licenses and attribution requirements of the upstream projects when using or redistributing Casileys.
 
