@@ -3,8 +3,8 @@ export const BIZ_BOT_SUPPORT_PAYLOAD: "{\"version\":1,\"is_ai_message\":true,\"s
 export const DEFAULT_ORIGIN: "https://web.whatsapp.com";
 export const CALL_VIDEO_PREFIX: "https://call.whatsapp.com/video/";
 export const CALL_AUDIO_PREFIX: "https://call.whatsapp.com/voice/";
-export const DONATE_URL: "https://saweria.co/itsliaaa";
-export const LIBRARY_NAME: "itsliaaa/baileys";
+export const WA_AUTHOR_URL: "https://wa.me/628386859765";
+export const CASILEYS_NAME: "Casileys";
 export const DEF_CALLBACK_PREFIX: "CB:";
 export const DEF_TAG_PREFIX: "TAG:";
 export const PHONE_CONNECTION_CB: "CB:Pong";
