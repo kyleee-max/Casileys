@@ -1,846 +1,1261 @@
-# 🌸 @kaels/casileys
-
-[![Logo](https://raw.githubusercontent.com/kyleee-max/mutsumi-file/main/uploads/1779033636326.jpeg)](https://www.npmjs.com/package/@kaels/casileys)
+🌱 Casileys
 
 <p align="center">
-   <a href="https://www.npmjs.com/package/@kaels/casileys">
-      <img src="https://img.shields.io/npm/v/@kaels/casileys?style=for-the-badge&logo=npm"/>
-   </a>
-   <a href="https://www.npmjs.com/package/@kaels/casileys">
-      <img src="https://img.shields.io/npm/dm/@kaels/casileys?style=for-the-badge&logo=npm"/>
-   </a>
-   <a href="https://github.com/kyleee-max/casileys">
-      <img src="https://img.shields.io/github/stars/kyleee-max/casileys?style=for-the-badge&logo=github"/>
-   </a>
-   <a href="LICENSE">
-      <img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/>
-   </a>
-   <a href="https://nodejs.org">
-      <img src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&labelColor=green&logoColor=white&style=for-the-badge"/>
-   </a>
-   <a href="#">
-      <img src="https://img.shields.io/badge/ESM-only?logo=javascript&labelColor=yellow&logoColor=black&style=for-the-badge"/>
-   </a>
-</p>
+  <img src="YOUR_THUMBNAIL_URL" alt="Casileys" width="180">
+</p><p align="center">
+  A WhatsApp Web API library for Node.js, based on Baileys and extended with additional message types, media handling, interactive messages, newsletter support, and more.
+</p><p align="center">
+  <a href="YOUR_NPM_URL"><img src="https://img.shields.io/npm/v/YOUR_NPM_PACKAGE?style=for-the-badge&logo=npm"/></a>
+  <a href="YOUR_NPM_URL"><img src="https://img.shields.io/npm/dm/YOUR_NPM_PACKAGE?style=for-the-badge&logo=npm"/></a>
+  <a href="YOUR_REPOSITORY_URL"><img src="https://img.shields.io/github/stars/YOUR_GITHUB_REPOSITORY?style=for-the-badge&logo=github"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue?style=for-the-badge"/></a>
+  <a href="https://nodejs.org"><img src="https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&labelColor=green&logoColor=white&style=for-the-badge"/></a>
+  <a href="#"><img src="https://img.shields.io/badge/ESM-only?logo=javascript&labelColor=yellow&logoColor=black&style=for-the-badge"/></a>
+</p>---
+
+✨ Highlights
+
+Feature| Support
+WhatsApp Web / Multi-device| ✅
+Pairing Code| ✅
+Text & Media Messages| ✅
+Albums| ✅
+Polls| ✅
+Interactive Messages| ✅
+Rich Responses| ✅
+Inline Entities| ✅
+Tables| ✅
+Group Status| ✅
+Sticker Pack| ✅
+Newsletter Messages| ✅
+Group Management| ✅
+Community Management| ✅
+Profile Management| ✅
+Business Features| ✅
+Privacy Management| ✅
+Message Editing & Deletion| ✅
+
+Casileys is designed to remain readable and auditable while extending the functionality available from its upstream fork.
 
 ---
 
-## 🙏 A Note & Apology
+🛠️ Internal Adjustments
 
-> [!IMPORTANT]
-> Saya ingin menyampaikan permohonan maaf yang tulus kepada **[@itsliaaa](https://github.com/itsliaaa)** selaku penulis fork [`@itsliaaa/baileys`**, yang menjadi dasar awal dari package ini.
->
-> Pada awalnya, `@kaels/casileys` dibuat berdasarkan fork tersebut tanpa memberikan atribusi yang layak — hal itu tidak benar dan saya mengakuinya.
->
-> **Terima kasih banyak kepada @itsliaaa** atas kerja kerasnya dalam membangun dan memelihara fork yang luar biasa ini. Kontribusinya sangat berarti bagi komunitas WhatsApp bot.
->
-> Ke depannya, `@kaels/casileys` akan dikembangkan secara mandiri sebagai proyek independen dengan modifikasi, perbaikan, dan arah yang berbeda — bukan lagi sekadar re-upload. Semua perubahan akan didokumentasikan secara transparan.
+Casileys retains the existing message and protocol implementations from its fork base while adding project-specific improvements.
 
----
+Some of the included changes cover:
 
-## ✨ Highlights
-
-Package ini dirancang untuk penggunaan produksi dengan fokus pada kejelasan dan keamanan:
-
-- 🚫 Tanpa obfuscation — mudah dibaca dan diaudit.
-- 🔧 Dikembangkan secara aktif dengan modifikasi dan penyesuaian tersendiri.
-
-> [!NOTE]
-> Proyek ini tidak dimaksudkan untuk menggantikan upstream Baileys maupun fork `@itsliaaa/baileys`.
+- Newsletter media handling.
+- "makeInMemoryStore" support.
+- Extended interactive message support.
+- Album messages.
+- Group status messages.
+- Additional message wrappers.
+- Extended media handling.
+- Direct "externalAdReply" access.
+- Additional newsletter, group, community, profile, business, and privacy utilities.
+- Casileys Group Status Helper.
 
 ---
 
-## 📋 Table of Contents
+📨 Message Compatibility
 
-- [🙏 A Note & Apology](#-a-note--apology)
-- [✨ Highlights](#-highlights)
-- [📥 Installation](#-installation)
-- [🌐 Connect to WhatsApp](#-connect-to-whatsapp-quick-step)
-- [🗄️ Implementing Data Store](#️-implementing-data-store)
-- [🪪 WhatsApp IDs Explain](#-whatsapp-ids-explain)
-- [✉️ Sending Messages](#️-sending-messages)
-  - [Text, Mention, Reaction, Pin, Forward, Contact, Location, Event, Poll](#-text)
-  - [Rich Response, Code Block, Inline Entities, Table](#-rich-response)
-- [📁 Sending Media Messages](#-sending-media-messages)
-  - [Image, Video, Sticker, Audio, Document, Album, Sticker Pack](#️-image)
-- [👉🏻 Sending Interactive Messages](#-sending-interactive-messages)
-  - [Buttons, List, Native Flow, Carousel, Hydrated Template](#-buttons)
-- [💳 Sending Payment Messages](#-sending-payment-messages)
-- [👁️ Other Message Options](#️-other-message-options)
-- [♻️ Modify Messages](#️-modify-messages)
-- [🧰 Additional Contents](#-additional-contents)
-  - [Group, Community, Profile, Business, Privacy, Newsletter, Events](#-group-management)
-- [📣 Credits](#-credits)
+The message layer supports the following extended structures:
+
+Message Type| Available
+Album| ✅
+Group Status| ✅
+Interactive| ✅
+Status Mention| ✅
+Sticker Pack| ✅
+Rich Response| ✅
+Code Block| ✅
+Inline Entities| ✅
+Table| ✅
+Payment-related Messages| ✅
+External Ad Reply| ✅
+View Once Variants| ✅
+Ephemeral| ✅
+Spoiler| ✅
+Lottie Sticker| ✅
+Raw Message| ✅
 
 ---
 
-## 📥 Installation
+📥 Installation
 
-Via `package.json`:
+"package.json"
 
-```json
 "dependencies": {
-   "@kaels/casileys": "latest"
+   "YOUR_CASILEYS_PACKAGE": "latest"
 }
-```
 
-Via terminal:
+GitHub
 
-```bash
-npm i @kaels/casileys@latest
-```
+"dependencies": {
+   "YOUR_CASILEYS_PACKAGE": "github:YOUR_GITHUB_REPOSITORY"
+}
 
-### 🧩 Import
+Terminal
 
-```javascript
-// ESM
-import { makeWASocket } from '@kaels/casileys'
+npm i YOUR_CASILEYS_PACKAGE@latest
 
-// CJS
-const { makeWASocket } = require('@kaels/casileys')
-```
+Or directly from GitHub:
+
+npm i github:YOUR_GITHUB_REPOSITORY
 
 ---
 
-## 🌐 Connect to WhatsApp (Quick Step)
+🧩 Import
 
-```javascript
-import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from '@kaels/casileys'
+ESM
+
+import { makeWASocket } from 'YOUR_CASILEYS_PACKAGE'
+
+CJS
+
+const { makeWASocket } = require('YOUR_CASILEYS_PACKAGE')
+
+---
+
+🌐 Connect to WhatsApp
+
+import { makeWASocket, delay, DisconnectReason, useMultiFileAuthState } from 'YOUR_CASILEYS_PACKAGE'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
+// --- Connect with pairing code
 const myPhoneNumber = '6288888888888'
+
+const logger = pino({ level: 'silent' })
 
 const connectToWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('session')
 
    const sock = makeWASocket({
-      logger: pino({ level: 'silent' }),
+      logger,
       auth: state
    })
-
    sock.ev.on('creds.update', saveCreds)
-
-   sock.ev.on('connection.update', async (update) => {
+   sock.ev.on('connection.update', (update) => {
       const { connection, lastDisconnect } = update
-
       if (connection === 'connecting' && !sock.authState.creds.registered) {
          await delay(1500)
          const code = await sock.requestPairingCode(myPhoneNumber)
-         console.log('🔗 Pairing code:', code)
+         console.log('🔗 Pairing code', ':', code)
       }
-
-      if (connection === 'close') {
-         const shouldReconnect = new Boom(lastDisconnect?.error)?.output?.statusCode !== DisconnectReason.loggedOut
-         if (shouldReconnect) connectToWhatsApp()
+      else if (connection === 'close') {
+         const shouldReconnect = new Boom(connection?.lastDisconnect?.error)?.output?.statusCode !== DisconnectReason.loggedOut
+         console.log('⚠️ Connection closed because', lastDisconnect.error, ', reconnecting ', shouldReconnect)
+         if (shouldReconnect) {
+            connectToWhatsApp()
+         }
       }
-
-      if (connection === 'open') {
-         console.log('✅ Connected to WhatsApp')
+      else if (connection === 'open') {
+         console.log('✅ Successfully connected to WhatsApp')
       }
    })
-
    sock.ev.on('messages.upsert', async ({ messages }) => {
       for (const message of messages) {
          if (!message.message) continue
-         await sock.sendMessage(message.key.remoteJid, { text: '👋🏻 Hello world' })
+
+         console.log('🔔 Got new message', ':', message)
+         await sock.sendMessage(message.key.remoteJid, {
+            text: '👋🏻 Hello world'
+         })
       }
    })
 }
 
 connectToWhatsApp()
-```
-
-### 🔐 Auth State
-
-> [!NOTE]
-> Bisa gunakan `useSingleFileAuthState` sebagai alternatif `useMultiFileAuthState`. `useSingleFileAuthState` sudah memiliki mekanisme caching internal, sehingga tidak perlu wrap `state.keys` dengan `makeCacheableSignalKeyStore`.
 
 ---
 
-## 🗄️ Implementing Data Store
+🔐 Auth State
 
-> [!CAUTION]
-> Sangat disarankan membangun data store sendiri — menyimpan seluruh history chat di memory bisa menyebabkan RAM usage yang tinggi.
+You can use "useMultiFileAuthState" as the default authentication state implementation.
 
-```javascript
-import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from '@kaels/casileys'
+Experimental alternatives such as "useSingleFileAuthState" and "useSqliteAuthState" may also be used where supported.
+
+---
+
+🗄️ Data Store
+
+import { makeWASocket, makeInMemoryStore, delay, DisconnectReason, useMultiFileAuthState } from 'YOUR_CASILEYS_PACKAGE'
 import { Boom } from '@hapi/boom'
 import pino from 'pino'
 
+const myPhoneNumber = '6288888888888'
+
+// --- Create your store path
 const storePath = './store.json'
 
+const logger = pino({ level: 'silent' })
 const connectToWhatsApp = async () => {
    const { state, saveCreds } = await useMultiFileAuthState('session')
 
-   const sock = makeWASocket({ logger: pino({ level: 'silent' }), auth: state })
+   const sock = makeWASocket({
+      logger,
+      auth: state
+   })
 
-   const store = makeInMemoryStore({ logger: pino({ level: 'silent' }), socket: sock })
+   const store = makeInMemoryStore({
+      logger,
+      socket: sock
+   })
+
    store.bind(sock.ev)
 
    sock.ev.on('creds.update', saveCreds)
+   sock.ev.on('connection.update', (update) => {
+      const { connection, lastDisconnect } = update
+      if (connection === 'connecting' && !sock.authState.creds.registered) {
+         await delay(1500)
+         const code = await sock.requestPairingCode(myPhoneNumber)
+         console.log('🔗 Pairing code', ':', code)
+      }
+      else if (connection === 'close') {
+         const shouldReconnect = new Boom(connection?.lastDisconnect?.error)?.output?.statusCode !== DisconnectReason.loggedOut
+         console.log('⚠️ Connection closed because', lastDisconnect.error, ', reconnecting ', shouldReconnect)
+         if (shouldReconnect) {
+            connectToWhatsApp()
+         }
+      }
+      else if (connection === 'open') {
+         console.log('✅ Successfully connected to WhatsApp')
+      }
+   })
+   sock.ev.on('chats.upsert', () => {
+      console.log('✉️ Got chats', store.chats.all())
+   })
 
-   // Baca store dari file
+   sock.ev.on('contacts.upsert', () => {
+      console.log('👥 Got contacts', Object.values(store.contacts))
+   })
+
+   // --- Read store from file
    store.readFromFile(storePath)
 
-   // Simpan store setiap 3 menit
-   setInterval(() => store.writeToFile(storePath), 180_000)
+   // --- Save store every 3 minutes
+   setInterval(() => {
+      store.writeToFile(storePath)
+   }, 180000)
 }
 
 connectToWhatsApp()
-```
+
+«For large applications, consider using a dedicated persistent data store instead of keeping the entire chat history in memory.»
 
 ---
 
-## 🪪 WhatsApp IDs Explain
+🪪 WhatsApp IDs
 
-| Format | Keterangan |
-|---|---|
-| `628xxx@s.whatsapp.net` | User biasa |
-| `628xxx@lid` | User dengan Local Identifier |
-| `123456789-123456@g.us` | Grup |
-| `11111111111@bot` | Meta AI |
-| `status@broadcast` | Stories |
-| `[timestamp]@broadcast` | Broadcast list |
+"jid" identifies the WhatsApp account, group, broadcast destination, newsletter, or status target involved in an operation.
+
+Target| Format
+User| "[country code][phone]@s.whatsapp.net"
+LID| "[id]@lid"
+Group| "[id]@g.us"
+Meta AI| "[id]@bot"
+Broadcast| "[timestamp]@broadcast"
+Status| "status@broadcast"
+Newsletter| "[id]@newsletter"
+
+For incoming messages, the destination is commonly available through:
+
+message.key.remoteJid
 
 ---
 
-## ✉️ Sending Messages
+✉️ Sending Messages
 
-> [!NOTE]
-> `jid` bisa diambil dari `message.key.remoteJid`.
+🔠 Text
 
-### 🔠 Text
-
-```javascript
-// Teks biasa
-sock.sendMessage(jid, { text: '👋🏻 Hello' }, { quoted: message })
-
-// Dengan link preview
+// --- Send a regular text message
 sock.sendMessage(jid, {
-   text: 'https://www.npmjs.com/package/@kaels/casileys 👆🏻 Check it out!',
+   text: '👋🏻 Hello'
+}, {
+   quoted: message
+})
+
+// --- Send a text message with a link preview
+const urlA = 'https://www.npmjs.com/package/YOUR_CASILEYS_PACKAGE'
+sock.sendMessage(jid, {
+   text: urlA + ' 👆🏻 Check it out!',
    linkPreview: {
-      'matched-text': 'https://www.npmjs.com/package/@kaels/casileys',
-      title: '🌸 @kaels/casileys',
-      description: 'WhatsApp Web API',
-      previewType: 0,
+      'matched-text': urlA,
+      title: '🌱 Casileys',
+      description: 'WhatsApp Web API for Node.js',
+      previewType: 0, // --- Use 1 for video playback in the link preview
       jpegThumbnail: fs.readFileSync('./path/to/image.jpg')
    }
 })
-```
 
-### 🔔 Mention
+// --- Send a text message with a large link preview and favicon
+import { prepareWAMessageMedia } from 'YOUR_CASILEYS_PACKAGE'
+const urlB = 'https://www.npmjs.com/package/YOUR_CASILEYS_PACKAGE#readme'
 
-```javascript
-// Mention spesifik
+const { imageMessage: image } = await prepareWAMessageMedia({
+   image: {
+      url: './path/to/image.jpg'
+   }
+}, {
+   upload: sock.waUploadToServer,
+   mediaTypeOverride: 'thumbnail-link'
+})
+
+// --- Set the thumbnail display size
+image.height = 720
+image.width = 480
+sock.sendMessage(jid, {
+   text: urlB + ' 👆🏻 Check it out!',
+   linkPreview: {
+      'matched-text': urlB,
+      title: '🌱 Casileys',
+      description: 'WhatsApp Web API for Node.js',
+      previewType: 0,
+      jpegThumbnail: fs.readFileSync('./path/to/image.jpg'),
+      highQualityThumbnail: image,
+      linkPreviewMetadata: {
+         linkMediaDuration: 0, // --- Duration in seconds (for video/audio content)
+         socialMediaPostType: 1, // --- Enum: 0 = NONE, 1 = REEL, 2 = LIVE_VIDEO, 3 = LONG_VIDEO, 4 = SINGLE_IMAGE, 5 = CAROUSEL
+      } // --- Additional metadata for large link preview
+   },
+   favicon: {
+      url: './path/to/tiny-image.ico'
+   }
+})
+
+🔔 Mention
+
+// --- Regular mention
 sock.sendMessage(jid, {
    text: '👋🏻 Hello @628123456789',
    mentions: ['628123456789@s.whatsapp.net']
-}, { quoted: message })
+}, {
+   quoted: message
+})
 
-// Mention semua member grup
+// --- Mention all
 sock.sendMessage(jid, {
    text: '👋🏻 Hello @all',
    mentionAll: true
-}, { quoted: message })
-```
-
-### 😁 Reaction
-
-```javascript
-sock.sendMessage(jid, {
-   react: { key: message.key, text: '✨' }
+}, {
+   quoted: message
 })
-```
 
-### 📌 Pin Message
+😁 Reaction
 
-```javascript
+sock.sendMessage(jid, {
+   react: {
+      key: message.key,
+      text: '✨'
+   }
+})
+
+📌 Pin Message
+
 sock.sendMessage(jid, {
    pin: message.key,
-   time: 86400, // 86400 (1d) | 604800 (7d) | 2592000 (30d)
-   type: 1      // 2 untuk unpin
+   time: 86400, // --- Set the value in seconds: 86400 (1d), 604800 (7d), or 2592000 (30d)
+   type: 1 // --- Or 2 to remove
 })
-```
 
-### ➡️ Forward Message
+🔖 Keep Chat
 
-```javascript
-sock.sendMessage(jid, { forward: message, force: true })
-```
-
-### 👤 Contact
-
-```javascript
-const vcard = 'BEGIN:VCARD\nVERSION:3.0\nFN:Kaelz\nTEL;type=CELL;waid=628123456789:+62 812 3456 789\nEND:VCARD'
+«Keep Chat can only be used in chats or groups with disappearing messages enabled.»
 
 sock.sendMessage(jid, {
-   contacts: { displayName: 'Kaelz', contacts: [{ vcard }] }
-}, { quoted: message })
-```
+   keep: message.key,
+   type: 1 // --- Or 2 to remove
+})
 
-### 📍 Location
+➡️ Forward Message
 
-```javascript
 sock.sendMessage(jid, {
-   location: { degreesLatitude: -6.2, degreesLongitude: 106.8, name: '📍 Jakarta' }
-}, { quoted: message })
-```
+   forward: message,
+   force: true // --- Optional
+})
 
-### 🗓️ Event
+👤 Contact
 
-```javascript
+const vcard = 'BEGIN:VCARD\n'
+            + 'VERSION:3.0\n'
+            + 'FN:Casileys User\n'
+            + 'ORG:Casileys;\n'
+            + 'TEL;type=CELL;type=VOICE;waid=628123456789:+62 8123 4567 89\n'
+            + 'END:VCARD'
+
+sock.sendMessage(jid, {
+   contacts: {
+      displayName: 'Casileys User',
+      contacts: [
+         { vcard }
+      ]
+   }
+}, {
+   quoted: message
+})
+
+📍 Location
+
+sock.sendMessage(jid, {
+   location: {
+      degreesLatitude: 24.121231,
+      degreesLongitude: 55.1121221,
+      name: '👋🏻 I am here'
+   }
+}, {
+   quoted: message
+})
+
+🗓️ Event
+
 sock.sendMessage(jid, {
    event: {
-      name: '🎶 Meet & Mingle',
-      description: 'Gathering seru bareng komunitas!',
-      call: 'audio',
-      startDate: new Date(Date.now() + 3_600_000),
-      endDate: new Date(Date.now() + 28_800_000),
-      location: { name: 'Jakarta', degreesLatitude: -6.2, degreesLongitude: 106.8 }
+      name: '🎶 Meet & Mingle Party',
+      description: 'Meet & Mingle Party is a fun, casual gathering to connect, chat, and build new relationships within the community.',
+      call: 'audio', // --- Or "video", this field is optional
+      startDate: new Date(Date.now() + 3600000),
+      endDate: new Date(Date.now() + 28800000),
+      isCancelled: false, // --- Optional
+      isScheduleCall: false, // --- Optional
+      extraGuestsAllowed: false, // --- Optional
+      location: {
+         name: 'Jakarta',
+         degreesLatitude: -6.2,
+         degreesLongitude: 106.8
+      }
    }
-}, { quoted: message })
-```
+}, {
+   quoted: message
+})
 
-### 📊 Poll
+👥 Group Invite
 
-```javascript
-// Poll biasa
+const inviteCode = groupUrl
+   .split('chat.whatsapp.com/')[1]
+   ?.split('?')[0]
+
+const groupJid = '1201111111111@g.us'
+const groupName = 'Casileys'
+
+sock.sendMessage(jid, {
+   groupInvite: {
+      inviteCode,
+      inviteExpiration: Date.now() + 86400000,
+      text: '👋🏻 Hello, we invite you to join our group.',
+      jid: groupJid,
+      subject: groupName,
+   }
+}, {
+   quoted: message
+})
+
+🛍️ Product
+
+import { randomUUID } from 'crypto'
+sock.sendMessage(jid, {
+   image: {
+      url: './path/to/image.jpg'
+   },
+   body: '👋🏻 Check my product here!',
+   footer: 'Casileys',
+   product: {
+      currencyCode: 'IDR',
+      description: '🛍️ Interesting product!',
+      priceAmount1000: 70_000_000,
+      productId: randomUUID(),
+      productImageCount: 1,
+      salePriceAmount1000: 65_000_000,
+      signedUrl: 'YOUR_PRODUCT_URL',
+      title: '📦 Casileys Product',
+      url: 'YOUR_PRODUCT_URL'
+   },
+   businessOwnerJid: '0@s.whatsapp.net'
+})
+
+📊 Poll
+
+// --- Regular poll message
 sock.sendMessage(jid, {
    poll: {
-      name: '🔥 Pilih yang terbaik!',
-      values: ['Option A', 'Option B'],
-      selectableCount: 1
+      name: '🔥 Voting time',
+      values: ['Yes', 'No'],
+      selectableCount: 1,
+      toAnnouncementGroup: false,
+      endDate: new Date(Date.now() + 28800000), // --- Optional
+      hideVoter: false, // --- Optional
+      canAddOption: false // --- Optional
    }
-}, { quoted: message })
-```
+}, {
+   quoted: message
+})
 
-### 💭 Button Response
-
-```javascript
-// Plain button reply
-sock.sendMessage(jid, {
-   type: 'plain',
-   buttonReply: { id: '#Menu', displayText: '✨ Menu' }
-}, { quoted: message })
-
-// Interactive flow reply
-sock.sendMessage(jid, {
-   flowReply: {
-      format: 0,
-      text: '💭 Response',
-      name: 'menu_options',
-      paramsJson: JSON.stringify({ id: '#Menu', description: 'Menu Utama' })
+// --- Quiz (only for newsletter)
+sock.sendMessage('1211111111111@newsletter', {
+   poll: {
+      name: '🔥 Quiz',
+      values: ['Yes', 'No'],
+      correctAnswer: 'Yes',
+      pollType: 1
    }
-}, { quoted: message })
-
-// List reply
-sock.sendMessage(jid, {
-   listReply: { title: '📄 See More', description: '✨ Menu', id: '#Menu' }
-}, { quoted: message })
-```
-
-### ✨ Rich Response
-
-```javascript
-sock.sendMessage(jid, {
-   disclaimerText: 'Contoh Rich Response',
-   richResponse: [
-      { text: 'Contoh penggunaan:' },
-      { language: 'javascript', code: [{ highlightType: 0, codeContent: 'console.log("Hello!")' }] },
-      { text: 'Mudah, kan?' }
-   ]
+}, {
+   quoted: message
 })
-```
 
-> [!TIP]
-> Import `tokenizeCode` untuk syntax highlighting otomatis:
-> ```javascript
-> import { tokenizeCode } from '@kaels/casileys'
-> ```
-
-### 🧾 Message with Code Block
-
-```javascript
+// --- Poll result
 sock.sendMessage(jid, {
-   disclaimerText: 'Code Block',
-   headerText: '## Contoh Kode',
-   contentText: '---',
-   code: 'console.log("Hello, World!")',
-   language: 'javascript',
-   footerText: 'Simpel kan?'
+   pollResult: {
+      name: '📝 Poll Result',
+      votes: [{
+         name: 'Nice',
+         voteCount: 10
+      }, {
+         name: 'Nah',
+         voteCount: 2
+      }],
+      pollType: 0 // Or 1 for quiz
+   }
+}, {
+   quoted: message
 })
-```
 
-### 🌏 Message with Inline Entities (Links)
-
-```javascript
+// --- Poll update
 sock.sendMessage(jid, {
-   disclaimerText: 'Link List',
-   headerText: '## Useful Links',
-   contentText: '---',
-   links: [
-      { text: '1. npm', title: 'Package Registry', url: 'https://npmjs.com' },
-      { text: '2. GitHub', title: 'Source Code', url: 'https://github.com' }
-   ],
-   footerText: '---'
+   pollUpdate: {
+      metadata: {},
+      key: message.key
+   }
+}, {
+   quoted: message
 })
-```
-
-### 📋 Message with Table
-
-```javascript
-sock.sendMessage(jid, {
-   disclaimerText: 'Tabel Perbandingan',
-   headerText: '## Node.js vs Bun vs Deno',
-   contentText: '---',
-   title: 'Runtime Comparison',
-   table: [
-      ['', 'Node.js', 'Bun', 'Deno'],
-      ['Engine', 'V8', 'JavaScriptCore', 'V8'],
-      ['Performance', '4/5', '5/5', '4/5']
-   ],
-   footerText: 'Pilih yang sesuai kebutuhan!'
-})
-```
 
 ---
 
-## 📁 Sending Media Messages
+📁 Sending Media Messages
 
-> [!NOTE]
-> Media bisa dikirim sebagai `Buffer`, `{ stream: Readable }`, atau `{ url: string }` (path lokal / URL).
+🖼️ Image
 
-### 🖼️ Image
-
-```javascript
 sock.sendMessage(jid, {
-   image: { url: './path/to/image.jpg' },
-   caption: '🔥 Keren!'
-}, { quoted: message })
-```
+   image: {
+      url: './path/to/image.jpg'
+   },
+   caption: '🖼️ Image'
+}, {
+   quoted: message
+})
 
-### 🎥 Video
+🎥 Video
 
-```javascript
 sock.sendMessage(jid, {
-   video: { url: './path/to/video.mp4' },
-   gifPlayback: false, // true untuk GIF
-   ptv: false,         // true untuk PTV
-   caption: '🎬 Video keren!'
-}, { quoted: message })
-```
+   video: {
+      url: './path/to/video.mp4'
+   },
+   caption: '🎥 Video'
+}, {
+   quoted: message
+})
 
-### 📃 Sticker
+📃 Sticker
 
-```javascript
 sock.sendMessage(jid, {
-   sticker: { url: './path/to/sticker.webp' }
-}, { quoted: message })
-```
+   sticker: {
+      url: './path/to/sticker.webp'
+   }
+}, {
+   quoted: message
+})
 
-### 💽 Audio
+💽 Audio
 
-```javascript
 sock.sendMessage(jid, {
-   audio: { url: './path/to/audio.mp3' },
-   ptt: false // true untuk Voice Note
-}, { quoted: message })
-```
+   audio: {
+      url: './path/to/audio.mp3'
+   },
+   mimetype: 'audio/mpeg',
+   ptt: false
+}, {
+   quoted: message
+})
 
-### 🗂️ Document
+🗂️ Document
 
-```javascript
 sock.sendMessage(jid, {
-   document: { url: './path/to/file.pdf' },
+   document: {
+      url: './path/to/document.pdf'
+   },
    mimetype: 'application/pdf',
-   caption: '📄 Dokumen'
-}, { quoted: message })
-```
+   fileName: 'document.pdf',
+   caption: '📄 Document'
+}, {
+   quoted: message
+})
 
-### 🖼️ Album (Image & Video)
+---
 
-```javascript
+🖼️ Album
+
 sock.sendMessage(jid, {
    album: [
-      { image: { url: './img1.jpg' }, caption: 'Foto 1' },
-      { video: { url: './vid1.mp4' }, caption: 'Video 1' },
-      { image: { url: './img2.jpg' }, caption: 'Foto 2' }
-   ]
-}, { quoted: message })
-```
-
-### 📦 Sticker Pack
-
-> [!IMPORTANT]
-> Jika `sharp` atau `@napi-rs/image` tidak terinstall, `cover` dan `stickers` harus sudah dalam format WebP.
-
-```javascript
-sock.sendMessage(jid, {
-   cover: { url: './cover.webp' },
-   stickers: [
-      { data: { url: './sticker1.webp' } },
-      { data: { url: './sticker2.webp' } }
-   ],
-   name: '📦 Sticker Pack Keren',
-   publisher: 'Kaelz',
-   description: '@kaels/casileys'
-}, { quoted: message })
-```
-
----
-
-## 👉🏻 Sending Interactive Messages
-
-### 🔘 Buttons
-
-```javascript
-// Button teks biasa
-sock.sendMessage(jid, {
-   text: '👆🏻 Pilih salah satu!',
-   footer: '@kaels/casileys',
-   buttons: [{ text: '👋🏻 Halo', id: '#Halo' }]
-}, { quoted: message })
-
-// Button dengan media & native flow
-sock.sendMessage(jid, {
-   image: { url: './path/to/image.jpg' },
-   caption: '👆🏻 Button + List!',
-   footer: '@kaels/casileys',
-   buttons: [{
-      text: '📋 Pilih',
-      sections: [{
-         title: '✨ Section 1',
-         rows: [{ title: '🏷️ Opsi A', description: '', id: '#OpsiA' }]
-      }]
-   }]
-}, { quoted: message })
-```
-
-### 📋 List
-
-> [!NOTE]
-> Hanya berfungsi di private chat (`@s.whatsapp.net`).
-
-```javascript
-sock.sendMessage(jid, {
-   text: '📋 Pilih menu!',
-   footer: '@kaels/casileys',
-   buttonText: '📋 Buka Menu',
-   title: '👋🏻 Menu Bot',
-   sections: [{
-      title: '🚀 Kategori 1',
-      rows: [{ title: '✨ Fitur A', description: 'Deskripsi singkat', rowId: '#FiturA' }]
-   }]
-}, { quoted: message })
-```
-
-### 🗄️ Interactive (Native Flow)
-
-```javascript
-// Native flow dengan berbagai tipe button
-sock.sendMessage(jid, {
-   image: { url: './path/to/image.jpg' },
-   caption: '🗄️ Interactive Menu!',
-   footer: '@kaels/casileys',
-   optionText: '👉🏻 Pilih Opsi',   // optional, wrap semua jadi satu list
-   optionTitle: '📄 Opsi Tersedia', // optional
-   nativeFlow: [
-      { text: '👋🏻 Greeting', id: '#Greeting', icon: 'review' },
-      { text: '📞 Telepon', call: '628123456789' },
-      { text: '📋 Copy', copy: '@kaels/casileys' },
-      { text: '🌐 Buka Web', url: 'https://www.npmjs.com/package/@kaels/casileys', useWebview: true },
       {
-         text: '📋 Pilih dari List',
-         sections: [{
-            title: '✨ Pilihan',
-            rows: [{ title: '🏷️ Opsi 1', description: '', id: '#Opsi1' }]
-         }],
-         icon: 'default'
+         image: {
+            url: './path/to/image-1.jpg'
+         }
+      },
+      {
+         image: {
+            url: './path/to/image-2.jpg'
+         }
+      },
+      {
+         video: {
+            url: './path/to/video.mp4'
+         }
       }
    ]
-}, { quoted: message })
-
-// Carousel
-sock.sendMessage(jid, {
-   text: '🎠 Carousel!',
-   footer: '@kaels/casileys',
-   cards: [{
-      image: { url: './img1.jpg' },
-      caption: '🖼️ Slide 1',
-      footer: '📸 Caption',
-      nativeFlow: [{ text: '🌐 Detail', url: 'https://npmjs.com', useWebview: true }]
-   }, {
-      image: { url: './img2.jpg' },
-      caption: '🖼️ Slide 2',
-      footer: '📸 Caption',
-      nativeFlow: [{ text: '👍 Pilih', id: '#Pilih2' }]
-   }]
-}, { quoted: message })
-
-// Native Flow dengan audio footer
-sock.sendMessage(jid, {
-   text: '🎵 Dengarkan dulu!',
-   audioFooter: { url: './audio.mp3' },
-   nativeFlow: [
-      { text: '👍🏻 Lanjut', id: '#Next', icon: 'review' },
-      { text: '👎🏻 Skip', id: '#Skip', icon: 'default' }
-   ]
-}, { quoted: message })
-```
-
-### 🫙 Hydrated Template
-
-```javascript
-sock.sendMessage(jid, {
-   title: '👋🏻 Halo!',
-   image: { url: './path/to/image.jpg' },
-   caption: '🫙 Template Message',
-   footer: '@kaels/casileys',
-   templateButtons: [
-      { text: '👉🏻 Klik Sini', id: '#Klik' },
-      { text: '🌐 Website', url: 'https://www.npmjs.com/package/@kaels/casileys' },
-      { text: '📞 Hubungi', call: '628123456789' }
-   ]
-}, { quoted: message })
-```
-
----
-
-## 💳 Sending Payment Messages
-
-```javascript
-// Invite payment
-sock.sendMessage(jid, { paymentInviteServiceType: 3 }) // 1, 2, atau 3
-
-// Order
-sock.sendMessage(jid, {
-   orderText: '🛍️ Pesanan Kamu',
-   thumbnail: fs.readFileSync('./thumbnail.jpg')
-}, { quoted: message })
-
-// Request payment
-sock.sendMessage(jid, {
-   text: '💳 Minta Pembayaran',
-   requestPaymentFrom: '0@s.whatsapp.net'
+}, {
+   quoted: message
 })
-```
 
 ---
 
-## 👁️ Other Message Options
+📦 Sticker Pack
 
-| Flag | Keterangan |
-|---|---|
-| `ai: true` | Tambah ikon AI (private chat only) |
-| `ephemeral: true` | Wrap ke `ephemeralMessage` |
-| `viewOnce: true` | View once (V1) |
-| `viewOnceV2: true` | View once (V2) |
-| `spoiler: true` | Wrap ke `spoilerMessage` |
-| `groupStatus: true` | Group status (grup only) |
-| `isLottie: true` | Lottie sticker |
-| `mentionAll: true` | Mention semua member grup |
-| `interactiveAsTemplate: true` | Wrap interactive ke template |
-| `raw: true` | Kirim struktur proto manual |
-
-```javascript
-// Contoh: view once + spoiler
 sock.sendMessage(jid, {
-   image: { url: './image.jpg' },
-   caption: '👁️ Lihat sekali aja!',
-   viewOnceV2: true
-}, { quoted: message })
-
-// External Ad Reply
-sock.sendMessage(jid, {
-   text: '📰 Info Penting!',
-   externalAdReply: {
-      title: '📝 Tahukah kamu?',
-      body: 'Fakta menarik hari ini',
-      thumbnail: fs.readFileSync('./thumbnail.jpg'),
-      largeThumbnail: false,
-      url: 'https://www.npmjs.com/package/@kaels/casileys'
+   stickerPack: {
+      name: 'Casileys Pack',
+      publisher: 'Casileys',
+      description: 'Casileys sticker pack'
    }
-}, { quoted: message })
-```
+}, {
+   quoted: message
+})
 
 ---
 
-## ♻️ Modify Messages
+👉🏻 Interactive Messages
 
-```javascript
-// Hapus pesan
-sock.sendMessage(jid, { delete: message.key })
+🔘 Buttons
 
-// Edit teks
-sock.sendMessage(jid, { text: '✏️ Teks yang sudah diedit', edit: message.key })
+sock.sendMessage(jid, {
+   buttons: [
+      {
+         buttonId: 'id1',
+         buttonText: {
+            displayText: 'Button 1'
+         },
+         type: 1
+      },
+      {
+         buttonId: 'id2',
+         buttonText: {
+            displayText: 'Button 2'
+         },
+         type: 1
+      }
+   ],
+   text: 'Select an option',
+   footer: 'Casileys'
+}, {
+   quoted: message
+})
 
-// Edit caption media
-sock.sendMessage(jid, { caption: '✏️ Caption baru', edit: message.key })
-```
+📋 List
+
+sock.sendMessage(jid, {
+   text: 'Select an option',
+   footer: 'Casileys',
+   title: 'Casileys Menu',
+   buttonText: 'Open',
+   sections: [
+      {
+         title: 'Menu',
+         rows: [
+            {
+               title: 'Option 1',
+               description: 'First option',
+               rowId: 'option_1'
+            },
+            {
+               title: 'Option 2',
+               description: 'Second option',
+               rowId: 'option_2'
+            }
+         ]
+      }
+   ]
+}, {
+   quoted: message
+})
+
+🗄️ Interactive
+
+sock.sendMessage(jid, {
+   interactiveMessage: {
+      body: {
+         text: 'Casileys Interactive'
+      },
+      footer: {
+         text: 'Select an action'
+      },
+      nativeFlowMessage: {
+         buttons: [
+            {
+               name: 'quick_reply',
+               buttonParamsJson: JSON.stringify({
+                  display_text: 'Open',
+                  id: 'open'
+               })
+            }
+         ]
+      }
+   }
+}, {
+   quoted: message
+})
+
+🫙 Hydrated Template
+
+sock.sendMessage(jid, {
+   hydratedTemplate: {
+      hydratedContentText: 'Casileys',
+      hydratedFooterText: 'WhatsApp Web API',
+      hydratedButtons: [
+         {
+            quickReplyButton: {
+               displayText: 'Open',
+               id: 'open'
+            }
+         }
+      ]
+   }
+}, {
+   quoted: message
+})
 
 ---
 
-## 🧰 Additional Contents
+💳 Sending Payment Messages
 
-### 🏷️ Find User ID (JID | PN / LID)
+Payment-related structures are exposed through the corresponding message types.
 
-> [!NOTE]
-> ID harus berupa angka saja (tanpa +, (), atau -) dan menyertakan kode negara.
+➕ Invite Payment
 
-```javascript
-const ids = await sock.findUserId('6281111111111@s.whatsapp.net')
-console.log(ids)
-// Output: { phoneNumber: '6281111111111@s.whatsapp.net', lid: '43411111111111@lid' }
-```
+sock.sendMessage(jid, {
+   paymentInviteMessage: {
+      serviceType: 3,
+      expiryTimestamp: Math.floor(Date.now() / 1000) + 86400
+   }
+}, {
+   quoted: message
+})
 
-### 🔑 Request Custom Pairing Code
+🧾 Invoice
 
-```javascript
-const code = await sock.requestPairingCode('6281111111111', 'KAELZBASE')
-console.log('🔗 Pairing code:', code)
-```
+Invoice support depends on the currently supported WhatsApp message schema.
 
-### 🖼️ Image Processing
+🛍️ Order
 
-> [!NOTE]
-> Otomatis menggunakan library yang tersedia: `sharp`, `@napi-rs/image`, atau `jimp`.
+sock.sendMessage(jid, {
+   orderMessage: {
+      orderId: 'ORDER_ID',
+      itemCount: 1,
+      status: 1,
+      surface: 1,
+      message: 'Casileys Order',
+      orderTitle: 'Example Product',
+      sellerJid: '0@s.whatsapp.net',
+      token: 'ORDER_TOKEN'
+   }
+}, {
+   quoted: message
+})
 
-```javascript
-import { getImageProcessingLibrary } from '@kaels/casileys'
+💳 Request Payment
 
-const lib = await getImageProcessingLibrary()
+sock.sendMessage(jid, {
+   requestPaymentMessage: {
+      currencyCodeIso4217: 'IDR',
+      amount1000: 1000000,
+      noteMessage: {
+         extendedTextMessage: {
+            text: 'Payment request'
+         }
+      }
+   }
+}, {
+   quoted: message
+})
 
-// Jika sharp tersedia
-if (lib.sharp?.default) {
-   const output = await lib.sharp.default('./image.jpg')
-      .resize(512)
-      .jpeg({ quality: 80 })
-      .toBuffer()
+---
+
+👁️ Other Message Options
+
+🤖 AI Icon
+
+sock.sendMessage(jid, {
+   text: 'Casileys',
+   ai: true
+})
+
+🕒 Ephemeral
+
+sock.sendMessage(jid, {
+   ephemeral: true,
+   text: 'Ephemeral message'
+})
+
+📰 External Ad Reply
+
+sock.sendMessage(jid, {
+   text: 'Check this out.',
+   externalAdReply: {
+      title: 'Casileys',
+      body: 'WhatsApp Web API',
+      thumbnail: fs.readFileSync('./thumbnail.jpg'),
+      mediaType: 1,
+      renderLargerThumbnail: true,
+      sourceUrl: 'YOUR_SOURCE_URL'
+   }
+})
+
+📑 Spoiler
+
+sock.sendMessage(jid, {
+   spoiler: true,
+   text: 'Spoiler message'
+})
+
+👁️ View Once
+
+sock.sendMessage(jid, {
+   viewOnce: true,
+   image: {
+      url: './path/to/image.jpg'
+   }
+})
+
+👁️ View Once V2
+
+sock.sendMessage(jid, {
+   viewOnceV2: true,
+   video: {
+      url: './path/to/video.mp4'
+   }
+})
+
+👁️ View Once V2 Extension
+
+sock.sendMessage(jid, {
+   viewOnceV2Extension: true,
+   image: {
+      url: './path/to/image.jpg'
+   }
+})
+
+🐱 Lottie Sticker
+
+sock.sendMessage(jid, {
+   sticker: {
+      url: './path/to/animation.webp'
+   },
+   isLottie: true
+})
+
+🏷️ Secure Meta Service Label
+
+sock.sendMessage(jid, {
+   text: 'Casileys',
+   secureMetaServiceLabel: true
+})
+
+🧩 Raw
+
+sock.sendMessage(jid, {
+   raw: {
+      message: {
+         conversation: 'Raw message'
+      }
+   }
+})
+
+---
+
+🧑‍🧑‍🧒 Group Status
+
+Casileys adds a dedicated helper for publishing group status content.
+
+Direct message option
+
+sock.sendMessage(jid, {
+   groupStatus: true,
+   image: {
+      url: './path/to/image.jpg'
+   },
+   caption: 'Group Status'
+})
+
+Helper API
+
+import {
+   sendGroupStatusText,
+   sendGroupStatusImage,
+   sendGroupStatusVideo,
+   sendGroupStatusAudio,
+   sendGroupStatusSticker
+} from 'YOUR_CASILEYS_PACKAGE'
+
+Text
+
+await sendGroupStatusText(
+   sock,
+   '120000000000000000@g.us',
+   'Hello from Casileys'
+)
+
+Image
+
+import fs from 'fs'
+
+await sendGroupStatusImage(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./image.jpg'),
+   {
+      caption: 'Casileys Group Status'
+   }
+)
+
+Video
+
+import fs from 'fs'
+
+await sendGroupStatusVideo(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./video.mp4'),
+   {
+      caption: 'Casileys Group Status'
+   }
+)
+
+Audio
+
+import fs from 'fs'
+
+await sendGroupStatusAudio(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./audio.ogg'),
+   {
+      mimetype: 'audio/ogg; codecs=opus',
+      ptt: true
+   }
+)
+
+Sticker
+
+import fs from 'fs'
+
+await sendGroupStatusSticker(
+   sock,
+   '120000000000000000@g.us',
+   fs.readFileSync('./sticker.webp'),
+   {
+      caption: 'Casileys Group Status'
+   }
+)
+
+WebP support
+
+The helper can process WebP sticker input:
+
+Input| Result
+Static WebP| Image
+Animated WebP| Video
+JPEG / PNG| Image
+MP4| Video
+OGG / Opus| Audio
+Text| Text
+
+Animated WebP conversion uses FFmpeg.
+
+YOUR_THUMBNAIL_URL
+
+---
+
+♻️ Modify Messages
+
+🗑️ Delete
+
+sock.sendMessage(jid, {
+   delete: message.key
+})
+
+✏️ Edit
+
+sock.sendMessage(jid, {
+   text: 'Edited message'
+}, {
+   edit: message.key
+})
+
+---
+
+🧰 Additional Contents
+
+🏷️ Find User ID
+
+const result = await sock.onWhatsApp(
+   '628123456789'
+)
+
+console.log(result)
+
+🔑 Request Custom Pairing Code
+
+const code = await sock.requestPairingCode(
+   '628123456789'
+)
+
+console.log(code)
+
+🖼️ Image Processing
+
+const imageLibrary =
+   await getImageProcessingLibrary()
+
+console.log(imageLibrary)
+
+---
+
+📣 Newsletter Management
+
+Newsletter JIDs use:
+
+123456789012345678@newsletter
+
+Example:
+
+const newsletterJid =
+   '123456789012345678@newsletter'
+
+await sock.sendMessage(
+   newsletterJid,
+   {
+      text: 'Hello from Casileys'
+   }
+)
+
+Newsletter media and message operations use the same socket/message infrastructure.
+
+---
+
+👥 Group Management
+
+Fetch groups
+
+const groups =
+   await sock.groupFetchAllParticipating()
+
+console.log(groups)
+
+Create group
+
+const group =
+   await sock.groupCreate(
+      'Casileys Community',
+      [
+         '628123456789@s.whatsapp.net'
+      ]
+   )
+
+console.log(group)
+
+Update participants
+
+await sock.groupParticipantsUpdate(
+   '120000000000000000@g.us',
+   [
+      '628123456789@s.whatsapp.net'
+   ],
+   'add'
+)
+
+The participant action can be changed to:
+
+add
+remove
+promote
+demote
+
+Update subject
+
+await sock.groupUpdateSubject(
+   '120000000000000000@g.us',
+   'Casileys Community'
+)
+
+Update description
+
+await sock.groupUpdateDescription(
+   '120000000000000000@g.us',
+   'Community powered by Casileys.'
+)
+
+Leave
+
+await sock.groupLeave(
+   '120000000000000000@g.us'
+)
+
+---
+
+👥 Community Management
+
+Community-related operations use the group/community methods provided by the socket and WhatsApp protocol.
+
+---
+
+👤 Profile Management
+
+Profile picture
+
+const profilePicture =
+   await sock.profilePictureUrl(
+      '628123456789@s.whatsapp.net',
+      'image'
+   )
+
+console.log(profilePicture)
+
+Update profile picture
+
+await sock.updateProfilePicture(
+   sock.user.id,
+   {
+      url: './profile.jpg'
+   }
+)
+
+Update profile status
+
+await sock.updateProfileStatus(
+   'Powered by Casileys'
+)
+
+---
+
+🛒 Business Management
+
+Business messages can be sent through the same message API.
+
+Product structures can contain fields such as:
+
+{
+   currencyCode: 'IDR',
+   priceAmount1000: 1000000,
+   productId: 'product-id',
+   productImageCount: 1,
+   title: 'Casileys Product',
+   description: 'Product description',
+   url: 'YOUR_PRODUCT_URL'
 }
-```
-
-### 👥 Group Management
-
-```javascript
-// Buat grup
-const group = await sock.groupCreate('Nama Grup', ['628xxx@s.whatsapp.net'])
-
-// Metadata
-const metadata = await sock.groupMetadata(jid)
-
-// Kelola member
-sock.groupParticipantsUpdate(jid, ['628xxx@s.whatsapp.net'], 'add')     // tambah
-sock.groupParticipantsUpdate(jid, ['628xxx@s.whatsapp.net'], 'remove')  // kick
-sock.groupParticipantsUpdate(jid, ['628xxx@s.whatsapp.net'], 'promote') // jadikan admin
-sock.groupParticipantsUpdate(jid, ['628xxx@s.whatsapp.net'], 'demote')  // copot admin
-
-// Setting grup
-sock.groupSettingUpdate(jid, 'announcement')  // hanya admin bisa chat
-sock.groupSettingUpdate(jid, 'not_announcement') // semua bisa chat
-sock.groupSettingUpdate(jid, 'locked')        // hanya admin edit info
-sock.groupSettingUpdate(jid, 'unlocked')      // semua bisa edit info
-sock.groupToggleEphemeral(jid, 86400)         // aktifkan pesan sementara
-sock.groupJoinApprovalMode(jid, 'on')         // aktifkan persetujuan member
-
-// Invite
-const inviteCode = await sock.groupInviteCode(jid)
-sock.groupRevokeInvite(jid)
-sock.groupAcceptInvite(inviteCode)
-sock.groupLeave(jid)
-```
-
-### 👥 Community Management
-
-```javascript
-const community = await sock.communityCreate('Nama Komunitas', 'Deskripsi')
-const group = await sock.communityCreateGroup('Announcements', ['628xxx@s.whatsapp.net'], communityJid)
-
-sock.communityLinkGroup(groupJid, communityJid)
-sock.communityUnlinkGroup(groupJid, communityJid)
-sock.communityLeave(jid)
-```
-
-### 👤 Profile Management
-
-```javascript
-sock.updateProfilePicture(jid, { url: './photo.jpg' })
-sock.removeProfilePicture(jid)
-sock.updateProfileName('Nama Baru')
-sock.updateProfileStatus('Status baru')
-sock.sendPresenceUpdate('available', jid)
-sock.readMessages([message.key])
-sock.updateBlockStatus(jid, 'block')    // blokir
-sock.updateBlockStatus(jid, 'unblock')  // buka blokir
-```
-
-### 🔐 Privacy Management
-
-```javascript
-sock.updateLastSeenPrivacy('all')          // semua bisa lihat
-sock.updateLastSeenPrivacy('contacts')     // kontak saja
-sock.updateLastSeenPrivacy('nobody')       // tidak ada
-sock.updateOnlinePrivacy('all')
-sock.updateProfilePicturePrivacy('contacts')
-sock.updateReadReceiptsPrivacy('all')
-sock.updateReadReceiptsPrivacy('none')
-sock.updateCallPrivacy('everyone')
-sock.updateDefaultDisappearingMode(86400)
-```
-
-### 📣 Newsletter Management
-
-```javascript
-sock.newsletterCreate('Nama Channel', 'Deskripsi')
-sock.newsletterFollow('jid@newsletter')
-sock.newsletterUnfollow('jid@newsletter')
-sock.newsletterMute('jid@newsletter')
-sock.newsletterUnmute('jid@newsletter')
-sock.newsletterUpdateName('jid@newsletter', 'Nama Baru')
-sock.newsletterUpdateDescription('jid@newsletter', 'Deskripsi baru')
-sock.newsletterReactMessage('jid@newsletter', '100', '💛')
-sock.newsletterDelete('jid@newsletter')
-```
-
-### 📡 Events
-
-```javascript
-sock.ev.on('connection.update', (update) => {})
-sock.ev.on('creds.update', (update) => {})
-sock.ev.on('messages.upsert', (update) => {})
-sock.ev.on('messages.update', (update) => {})
-sock.ev.on('messages.delete', (update) => {})
-sock.ev.on('messages.reaction', (update) => {})
-sock.ev.on('groups.upsert', (update) => {})
-sock.ev.on('groups.update', (update) => {})
-sock.ev.on('group-participants.update', (update) => {})
-sock.ev.on('contacts.upsert', (update) => {})
-sock.ev.on('contacts.update', (update) => {})
-sock.ev.on('chats.upsert', (update) => {})
-sock.ev.on('chats.update', (update) => {})
-sock.ev.on('presence.update', (update) => {})
-sock.ev.on('blocklist.set', (update) => {})
-sock.ev.on('blocklist.update', (update) => {})
-sock.ev.on('call', (update) => {})
-sock.ev.on('newsletter.reaction', (update) => {})
-sock.ev.on('newsletter.view', (update) => {})
-sock.ev.on('settings.update', (update) => {})
-```
 
 ---
 
-## 📣 Credits
+🔐 Privacy Management
 
-Kredit penuh diberikan kepada para maintainer dan kontributor asli Baileys:
+const privacy =
+   await sock.fetchPrivacySettings()
 
-- [purpshell](https://github.com/purpshell)
-- [jlucaso1](https://github.com/jlucaso1)
-- [adiwajshing](https://github.com/adiwajshing)
+console.log(privacy)
 
-Terima kasih khusus kepada:
-- **[itsliaaa](https://github.com/itsliaaa)** — atas fork [`@itsliaaa/baileys`](https://www.npmjs.com/package/@itsliaaa/baileys) yang menjadi fondasi awal package ini. Maaf atas kurangnya atribusi sebelumnya.
-- **[itsreimau](https://github.com/itsreimau)** — atas perbaikan implementasi `updateBlockStatus`.
-- **[WhiskeySockets/Baileys](https://github.com/WhiskeySockets/Baileys)** — upstream library yang menjadi dasar dari semuanya.
+---
 
-> [!CAUTION]
-> ⚠️ Modifikasi, penghapusan, atau kesalahan representasi kredit ini dilarang keras. Setiap redistribusi atau fork harus mempertahankan bagian ini dalam bentuk aslinya.
+📡 Events
+
+Casileys exposes WhatsApp events through "sock.ev".
+
+Messages
+
+sock.ev.on('messages.upsert', async ({ messages }) => {
+   for (const message of messages) {
+      if (!message.message) continue
+
+      console.log(message)
+   }
+})
+
+Connection
+
+sock.ev.on('connection.update', (update) => {
+   const {
+      connection,
+      lastDisconnect
+   } = update
+
+   console.log({
+      connection,
+      lastDisconnect
+   })
+})
+
+Credentials
+
+sock.ev.on('creds.update', saveCreds)
+
+---
+
+🔗 Project Resources
+
+Resource| URL
+Repository| "YOUR_REPOSITORY_URL"
+NPM| "YOUR_NPM_URL"
+Chatbot| "YOUR_CHATBOT_URL"
+Thumbnail| "YOUR_THUMBNAIL_URL"
+
+---
+
+⚠️ Disclaimer
+
+Casileys is an independent fork based on existing Baileys-related projects.
+
+It is not affiliated with WhatsApp or Meta Platforms, Inc.
+
+The project retains appropriate attribution to its upstream projects and contributors.
+
+Fork reference:
+
+"YOUR_ITSLIAAA_URL"
+
+Please respect the licenses and attribution requirements of the upstream projects when using or redistributing Casileys.
+
+---
+
+📣 Credits
+
+Upstream
+
+- WhiskeySockets / Baileys
+- Original Baileys maintainers and contributors
+- Contributors to the WhatsApp protocol ecosystem
+
+Fork Base
+
+- ItsLiaaa / Baileys
+- Contributors to the fork base
+
+Casileys
+
+- Casileys contributors and maintainers
+- Contributors to Casileys-specific improvements and utilities
+
+---
+
+📄 License
+
+Casileys is released under the MIT License.
+
+See ""LICENSE"" (./LICENSE) for the complete license text.
