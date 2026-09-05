@@ -321,7 +321,7 @@ sock.sendMessage(jid, {
 })
 
 // --- Send a text message with a large link preview and favicon
-import { prepareWAMessageMedia } from 'YOUR_CASILEYS_PACKAGE'
+import { prepareWAMessageMedia } from '@kaels/casileys'
 const urlB = 'https://www.npmjs.com/package/@kaels/casileys#readme'
 
 const { imageMessage: image } = await prepareWAMessageMedia({
@@ -1121,6 +1121,337 @@ sock.sendMessage(jid, {
 ---
 
 ## 🧰 Additional Contents
+
+### 🧱 AIRich — Rich HTML / Rich Response Messages
+
+Casileys includes support for constructing **Rich Response Messages**, including
+interactive HTML content rendered inside supported WhatsApp clients.
+
+`AIRich` is a convenience builder. It is **not the underlying protocol**.
+
+If you need complete control over the payload, you can construct the Rich Message
+structure yourself and send it through `sock.relayMessage()`.
+
+---
+
+#### 🧬 Rich Message Structure
+
+The important structure is:
+
+~~~text
+botForwardedMessage
+└── message
+    └── richResponseMessage
+        ├── messageType
+        ├── submessages[]
+        ├── unifiedResponse
+        │   └── data
+        │       └── Base64 encoded GenAIUnifiedResponse
+        │           ├── __typename
+        │           ├── response_id
+        │           └── sections[]
+        │               └── view_model
+        │                   ├── __typename
+        │                   └── primitive
+        │                       ├── __typename
+        │                       ├── payload
+        │                       └── trusted_sources[]
+        └── contextInfo
+~~~
+
+The HTML renderer is represented by a primitive such as:
+
+~~~text
+GenAIaeacdsnwHtmlPrimitive
+~~~
+
+Its `payload` contains the HTML source.
+
+---
+
+#### 📦 GenAIUnifiedResponse
+
+The `unifiedResponse.data` field contains a serialized
+`GenAIUnifiedResponse` object which is then encoded as Base64.
+
+Basic structure:
+
+~~~js
+const responseId = crypto.randomUUID();
+
+const unifiedResponse = {
+  __typename: 'GenAIUnifiedResponse',
+  response_id: responseId,
+  sections: [
+    {
+      __typename: 'GenAIUnifiedResponseSection',
+      view_model: {
+        __typename: 'GenAISingleLayoutViewModel',
+        primitive: {
+          __typename: 'GenAIaeacdsnwHtmlPrimitive',
+          payload: '<h1>Hello World</h1>',
+          trusted_sources: []
+        }
+      }
+    }
+  ]
+};
+
+const data = Buffer.from(
+  JSON.stringify(unifiedResponse)
+).toString('base64');
+~~~
+
+> The exact serialization/escaping used by different implementations may vary.
+> The important part is that `unifiedResponse.data` carries the serialized
+> unified response as Base64.
+
+---
+
+#### 🛠️ Manual Rich Message Construction
+
+You do **not** need `createAIRich()` to construct a Rich Message.
+
+A message can be assembled manually:
+
+~~~js
+const responseId = crypto.randomUUID();
+
+const unifiedResponse = {
+  __typename: 'GenAIUnifiedResponse',
+  response_id: responseId,
+  sections: [
+    {
+      __typename: 'GenAIUnifiedResponseSection',
+      view_model: {
+        __typename: 'GenAISingleLayoutViewModel',
+        primitive: {
+          __typename: 'GenAIaeacdsnwHtmlPrimitive',
+          payload: `
+            <h1>Hello World</h1>
+            <p>This is a Rich HTML message.</p>
+          `,
+          trusted_sources: []
+        }
+      }
+    }
+  ]
+};
+
+const data = Buffer.from(
+  JSON.stringify(unifiedResponse)
+).toString('base64');
+
+const message = {
+  messageContextInfo: {
+    deviceListMetadata: {},
+    deviceListMetadataVersion: 2,
+    botMetadata: {
+      messageDisclaimerText: '',
+      botResponseId: crypto.randomUUID(),
+
+      // Verification metadata may be required by the
+      // target renderer/client.
+      verificationMetadata: {
+        proofs: [
+          {
+            version: 1,
+            useCase: 1,
+            signature: '<SIGNATURE>',
+            certificateChain: [
+              '<CERTIFICATE_1>',
+              '<CERTIFICATE_2>'
+            ]
+          }
+        ]
+      }
+    }
+  },
+
+  botForwardedMessage: {
+    message: {
+      richResponseMessage: {
+        messageType: 1,
+
+        submessages: [],
+
+        unifiedResponse: {
+          data
+        },
+
+        contextInfo: {}
+      }
+    }
+  }
+};
+
+await sock.relayMessage(
+  jid,
+  message,
+  {}
+);
+~~~
+
+The verification values above are placeholders. They are shown to document the
+message structure and must not be treated as valid credentials.
+
+---
+
+#### 🧩 Custom Primitives
+
+The `primitive` object is the part that describes the actual content rendered
+by the client.
+
+For example, an HTML primitive has this general form:
+
+~~~js
+{
+  __typename: 'GenAIaeacdsnwHtmlPrimitive',
+  payload: '<h1>Hello</h1>',
+  trusted_sources: []
+}
+~~~
+
+This means the Rich Message system is not limited to a single HTML helper.
+Different primitive types can represent different kinds of content.
+
+When experimenting with undocumented primitives, inspect the actual serialized
+`unifiedResponse` payload rather than assuming that every primitive behaves like
+HTML.
+
+---
+
+#### 🧰 AIRich Convenience Builder
+
+`AIRich` provides a higher-level API for constructing the same general structure.
+
+Create a builder from a socket:
+
+~~~js
+const rich = sock.createAIRich();
+~~~
+
+Add HTML:
+
+~~~js
+rich.addHtml(`
+  <h1>Hello World</h1>
+  <p>Generated by Casileys.</p>
+`);
+~~~
+
+Then send it:
+
+~~~js
+await rich.send(jid);
+~~~
+
+`createAIRich()`, `addHtml()`, and `send()` are **convenience methods**.
+They are not required by the Rich Message protocol itself.
+
+Use the manual `relayMessage()` approach when you need to modify fields that
+are not exposed by the builder.
+
+---
+
+#### 🖥️ Interactive HTML
+
+Rich HTML can contain normal browser-side JavaScript.
+
+For example:
+
+~~~js
+const rich = sock.createAIRich();
+
+rich.addHtml(`
+  <button onclick="
+    document.getElementById('counter').textContent++;
+  ">
+    Click me
+  </button>
+
+  <p id="counter">0</p>
+`);
+
+await rich.send(jid);
+~~~
+
+The HTML runs inside the client's Rich Message renderer, so the JavaScript
+environment is separate from the Node.js environment running Casileys.
+
+For example:
+
+~~~js
+window
+~~~
+
+exists inside the HTML renderer, but it does not exist in a normal Node.js
+evaluation context.
+
+---
+
+#### 🌐 WebSocket / Realtime HTML
+
+The Rich HTML renderer exposes the browser WebSocket API on supported clients.
+
+This makes realtime HTML applications technically possible without sending a
+new WhatsApp message for every state update.
+
+Example:
+
+~~~js
+const rich = sock.createAIRich();
+
+rich.addHtml(`
+  <button id="connect">Connect</button>
+  <pre id="output"></pre>
+
+  <script>
+    const output = document.getElementById('output');
+
+    document.getElementById('connect').onclick = () => {
+      const ws = new WebSocket('wss://example.com');
+
+      ws.onopen = () => {
+        output.textContent = 'Connected';
+        ws.send('HELLO');
+      };
+
+      ws.onmessage = event => {
+        output.textContent = event.data;
+      };
+
+      ws.onerror = () => {
+        output.textContent = 'WebSocket error';
+      };
+    };
+  </script>
+`);
+
+await rich.send(jid);
+~~~
+
+A realtime multiplayer game can therefore be designed as:
+
+~~~text
+WhatsApp Rich HTML
+        │
+        │ WebSocket
+        ▼
+Realtime Game Server
+        │
+        ├── Player 1 state
+        ├── Player 2 state
+        └── Game state
+~~~
+
+Casileys only needs to deliver the initial Rich Message. The realtime game
+state can then be handled by the HTML client and the external server.
+
+> Availability of browser APIs and network access depends on the WhatsApp
+> client and Rich Message renderer.
+
+---
 
 ### 🏷️ Find User ID
 

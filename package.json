@@ -1,6 +1,6 @@
 {
   "name": "@kaels/casileys",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "Casileys — Enhanced WhatsApp Web API based on Baileys.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
